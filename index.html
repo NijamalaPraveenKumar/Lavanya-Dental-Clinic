@@ -65,23 +65,33 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            box-shadow: 0 20px 40px -15px rgba(10, 31, 68, 0.1);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 25px 50px -12px rgba(10, 31, 68, 0.15);
         }
 
         .gold-gradient-text {
-            background: linear-gradient(to right, #D4AF37, #F4E4BC, #B8860B);
+            background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #F4E4BC 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #B8860B 100%);
+            background-size: 200% auto;
+            transition: 0.5s;
+        }
+
+        .gold-gradient-bg:hover {
+            background-position: right center;
+        }
+
         .nav-blur {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
         }
 
         .gold-glow {
@@ -89,7 +99,7 @@
         }
 
         .gold-glow:hover {
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.5);
         }
 
         [x-cloak] { display: none !important; }
@@ -97,8 +107,8 @@
         /* Reveal on Scroll */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .reveal.active {
@@ -108,8 +118,8 @@
 
         .reveal-left {
             opacity: 0;
-            transform: translateX(-40px);
-            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateX(-30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .reveal-left.active {
@@ -119,8 +129,8 @@
 
         .reveal-right {
             opacity: 0;
-            transform: translateX(40px);
-            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateX(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .reveal-right.active {
@@ -130,10 +140,10 @@
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: #f8f9fa;
         }
         ::-webkit-scrollbar-thumb {
             background: #0A1F44;
@@ -144,8 +154,52 @@
         }
 
         .hero-gradient {
-            background: radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
-                        radial-gradient(circle at 20% 70%, rgba(10, 31, 68, 0.05) 0%, transparent 50%);
+            background: radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 60%),
+                        radial-gradient(circle at 20% 70%, rgba(10, 31, 68, 0.08) 0%, transparent 60%);
+        }
+
+        .btn-premium {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn-premium:hover::before {
+            left: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .reveal, .reveal-left, .reveal-right {
+                transform: none !important;
+                opacity: 1 !important;
+                transition: none !important;
+            }
+            
+            section {
+                padding-top: 5rem !important;
+                padding-bottom: 5rem !important;
+            }
+
+            h1 {
+                font-size: 3.5rem !important;
+                line-height: 1.1 !important;
+            }
+
+            h2 {
+                font-size: 2.75rem !important;
+            }
         }
     </style>
 </head>
@@ -199,14 +253,14 @@
             <!-- Desktop Nav -->
             <div class="hidden lg:flex items-center gap-10">
                 <div class="flex items-center gap-8">
-                    <a href="#home" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70 hover:text-navy">Home</a>
-                    <a href="#about" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70 hover:text-navy">About</a>
-                    <a href="#services" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70 hover:text-navy">Services</a>
-                    <a href="#gallery" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70 hover:text-navy">Gallery</a>
-                    <a href="#contact" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70 hover:text-navy">Contact</a>
+                    <a href="#home" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70">Home</a>
+                    <a href="#about" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70">About</a>
+                    <a href="#services" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70">Services</a>
+                    <a href="#gallery" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70">Gallery</a>
+                    <a href="#contact" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70">Contact</a>
                 </div>
                 <div class="h-6 w-px bg-gold/20"></div>
-                <a href="#appointment" class="bg-navy text-white px-8 py-3 rounded-full text-xs font-bold gold-glow transition-all hover:-translate-y-1 active:translate-y-0 border border-gold/30 tracking-widest">
+                <a href="#appointment" class="gold-gradient-bg text-white px-8 py-3 rounded-full text-xs font-bold gold-glow transition-all hover:-translate-y-1 active:translate-y-0 tracking-widest btn-premium">
                     BOOK APPOINTMENT
                 </a>
             </div>
@@ -248,23 +302,23 @@
 
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
             <div class="reveal-left active">
-                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-8">
+                <a href="https://wa.me/919876543210" target="_blank" class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gold/10 border border-gold/20 mb-10 hover:bg-gold/20 transition-all group">
                     <span class="w-2 h-2 rounded-full bg-gold animate-ping"></span>
-                    <span class="text-gold font-bold tracking-[0.2em] uppercase text-[10px]">Excellence in Dentistry</span>
-                </div>
-                <h1 class="text-5xl sm:text-7xl xl:text-8xl font-bold text-navy leading-[1.05] mb-8">
-                    Crafting <br>
-                    <span class="italic font-normal gold-gradient-text">Confident</span> <br>
-                    Smiles
+                    <span class="text-gold font-bold tracking-[0.2em] uppercase text-[10px] group-hover:text-gold-dark transition-colors">Open for Consultations</span>
+                </a>
+                <h1 class="text-5xl sm:text-7xl xl:text-8xl font-bold text-navy leading-[1.05] mb-8 tracking-tighter">
+                    The Art of a <br>
+                    <span class="italic font-normal gold-gradient-text">Perfect</span> <br>
+                    Smile
                 </h1>
                 <p class="text-lg md:text-xl text-gray-500 mb-12 max-w-lg leading-relaxed font-medium">
-                    Experience the pinnacle of dental artistry and clinical precision in an environment of absolute luxury and care.
+                    Experience the pinnacle of dental artistry and clinical precision. We combine luxury with cutting-edge technology to craft your masterpiece.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-6">
-                    <a href="#appointment" class="bg-navy text-white px-10 py-5 rounded-2xl font-bold flex items-center justify-center gap-3 gold-glow transition-all hover:-translate-y-1 hover:shadow-2xl tracking-widest">
+                    <a href="#appointment" class="gold-gradient-bg text-white px-10 py-5 rounded-2xl font-bold flex items-center justify-center gap-3 gold-glow transition-all hover:-translate-y-1 hover:shadow-2xl tracking-widest btn-premium">
                         RESERVE NOW <i data-lucide="arrow-right" class="w-5 h-5"></i>
                     </a>
-                    <a href="tel:+919876543210" class="group flex items-center justify-center gap-4 px-10 py-5 rounded-2xl font-bold text-navy border-2 border-navy/10 hover:border-navy transition-all">
+                    <a href="tel:+919876543210" class="group flex items-center justify-center gap-4 px-10 py-5 rounded-2xl font-bold text-navy border-2 border-navy/10 hover:border-navy transition-all hover:bg-navy/5">
                         <div class="w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center group-hover:bg-navy group-hover:text-white transition-colors">
                             <i data-lucide="phone" class="w-5 h-5"></i>
                         </div>
@@ -394,68 +448,68 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Teeth Whitening -->
                 <div class="group glass-card p-10 rounded-[40px] hover:bg-navy transition-all duration-700 cursor-pointer overflow-hidden relative reveal">
-                    <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500">
+                    <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500 shadow-sm">
                         <i data-lucide="sparkles" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 group-hover:text-white transition-colors">Teeth Whitening</h3>
-                    <p class="text-gray-500 group-hover:text-gray-300 transition-colors leading-relaxed mb-8">
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-white transition-colors tracking-tight">Teeth Whitening</h3>
+                    <p class="text-gray-500 group-hover:text-gray-300 transition-colors leading-relaxed mb-8 text-sm font-medium">
                         Advanced laser technology for a radiant, Hollywood-standard smile in a single session.
                     </p>
-                    <div class="flex items-center gap-3 text-gold font-bold text-xs tracking-widest uppercase">
+                    <div class="flex items-center gap-3 text-gold font-bold text-[10px] tracking-[0.3em] uppercase">
                         Explore Service <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
                     </div>
-                    <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 -z-10">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 -z-10 scale-110 group-hover:scale-100 transition-transform duration-1000">
                         <img src="https://images.unsplash.com/photo-1588776814546-1ffce47267a5?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Teeth Whitening" referrerPolicy="no-referrer">
                     </div>
                 </div>
 
                 <!-- Dental Implants -->
                 <div class="group glass-card p-10 rounded-[40px] hover:bg-navy transition-all duration-700 cursor-pointer overflow-hidden relative reveal" style="transition-delay: 0.1s">
-                    <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500">
+                    <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500 shadow-sm">
                         <i data-lucide="activity" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 group-hover:text-white transition-colors">Dental Implants</h3>
-                    <p class="text-gray-500 group-hover:text-gray-300 transition-colors leading-relaxed mb-8">
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-white transition-colors tracking-tight">Dental Implants</h3>
+                    <p class="text-gray-500 group-hover:text-gray-300 transition-colors leading-relaxed mb-8 text-sm font-medium">
                         Premium titanium solutions that restore function and aesthetics with permanent precision.
                     </p>
-                    <div class="flex items-center gap-3 text-gold font-bold text-xs tracking-widest uppercase">
+                    <div class="flex items-center gap-3 text-gold font-bold text-[10px] tracking-[0.3em] uppercase">
                         Explore Service <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
                     </div>
-                    <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 -z-10">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 -z-10 scale-110 group-hover:scale-100 transition-transform duration-1000">
                         <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Dental Implants" referrerPolicy="no-referrer">
                     </div>
                 </div>
 
                 <!-- Smile Design -->
                 <div class="group glass-card p-10 rounded-[40px] hover:bg-navy transition-all duration-700 cursor-pointer overflow-hidden relative reveal" style="transition-delay: 0.2s">
-                    <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500">
+                    <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500 shadow-sm">
                         <i data-lucide="gem" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 group-hover:text-white transition-colors">Smile Design</h3>
-                    <p class="text-gray-500 group-hover:text-gray-300 transition-colors leading-relaxed mb-8">
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-white transition-colors tracking-tight">Smile Design</h3>
+                    <p class="text-gray-500 group-hover:text-gray-300 transition-colors leading-relaxed mb-8 text-sm font-medium">
                         A holistic transformation using veneers and artistry to create your most confident look.
                     </p>
-                    <div class="flex items-center gap-3 text-gold font-bold text-xs tracking-widest uppercase">
+                    <div class="flex items-center gap-3 text-gold font-bold text-[10px] tracking-[0.3em] uppercase">
                         Explore Service <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
                     </div>
-                    <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 -z-10">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 -z-10 scale-110 group-hover:scale-100 transition-transform duration-1000">
                         <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Smile Design" referrerPolicy="no-referrer">
                     </div>
                 </div>
 
                 <!-- Root Canal -->
                 <div class="group glass-card p-10 rounded-[40px] hover:bg-navy transition-all duration-700 cursor-pointer overflow-hidden relative reveal" style="transition-delay: 0.3s">
-                    <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500">
+                    <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500 shadow-sm">
                         <i data-lucide="shield" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 group-hover:text-white transition-colors">Root Canal</h3>
-                    <p class="text-gray-500 group-hover:text-gray-300 transition-colors leading-relaxed mb-8">
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-white transition-colors tracking-tight">Root Canal</h3>
+                    <p class="text-gray-500 group-hover:text-gray-300 transition-colors leading-relaxed mb-8 text-sm font-medium">
                         Painless, microscopic endodontics focused on preserving your natural dental structure.
                     </p>
-                    <div class="flex items-center gap-3 text-gold font-bold text-xs tracking-widest uppercase">
+                    <div class="flex items-center gap-3 text-gold font-bold text-[10px] tracking-[0.3em] uppercase">
                         Explore Service <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
                     </div>
-                    <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 -z-10">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 -z-10 scale-110 group-hover:scale-100 transition-transform duration-1000">
                         <img src="https://images.unsplash.com/photo-1445527815219-ecbfec67492e?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Root Canal" referrerPolicy="no-referrer">
                     </div>
                 </div>
@@ -513,21 +567,31 @@
             </div>
 
             <div class="relative max-w-5xl mx-auto">
-                <div class="overflow-hidden rounded-[60px] glass-card p-12 md:p-24">
-                    <div class="flex transition-transform duration-700 cubic-bezier(0.22, 1, 0.36, 1)" :style="`transform: translateX(-${activeIndex * 100}%)`">
+                <div class="overflow-hidden rounded-[60px] glass-card p-12 md:p-24 relative">
+                    <!-- Quote Icon Background -->
+                    <div class="absolute top-10 left-10 text-gold/10 pointer-events-none">
+                        <i data-lucide="quote" class="w-48 h-48"></i>
+                    </div>
+
+                    <div class="flex transition-transform duration-1000 cubic-bezier(0.16, 1, 0.3, 1)" :style="`transform: translateX(-${activeIndex * 100}%)`">
                         <template x-for="(review, index) in reviews" :key="index">
                             <div class="w-full flex-shrink-0 px-4">
-                                <div class="text-center">
-                                    <div class="flex justify-center text-gold mb-12">
+                                <div class="text-center relative z-10">
+                                    <div class="flex justify-center text-gold mb-12 gap-1">
                                         <template x-for="i in review.rating">
-                                            <i data-lucide="star" class="w-8 h-8 fill-current"></i>
+                                            <i data-lucide="star" class="w-6 h-6 fill-current"></i>
                                         </template>
                                     </div>
-                                    <p class="text-3xl md:text-4xl text-navy font-serif italic mb-16 leading-relaxed" x-text="'&quot;' + review.text + '&quot;'"></p>
+                                    <p class="text-2xl md:text-4xl text-navy font-serif italic mb-16 leading-relaxed tracking-tight" x-text="'&quot;' + review.text + '&quot;'"></p>
                                     <div class="flex flex-col items-center">
-                                        <img :src="review.image" class="w-20 h-20 rounded-2xl object-cover mb-6 shadow-xl border-4 border-white" alt="Patient">
+                                        <div class="relative mb-6">
+                                            <img :src="review.image" class="w-24 h-24 rounded-3xl object-cover shadow-2xl border-4 border-white" alt="Patient">
+                                            <div class="absolute -bottom-2 -right-2 bg-gold text-white p-2 rounded-xl shadow-lg">
+                                                <i data-lucide="check" class="w-4 h-4"></i>
+                                            </div>
+                                        </div>
                                         <h4 class="font-bold text-2xl text-navy" x-text="review.name"></h4>
-                                        <p class="text-gold text-sm font-bold uppercase tracking-widest mt-2" x-text="review.role"></p>
+                                        <p class="text-gold text-xs font-bold uppercase tracking-[0.3em] mt-2" x-text="review.role"></p>
                                     </div>
                                 </div>
                             </div>
@@ -629,7 +693,7 @@
                                 <textarea rows="3" placeholder="Tell us about your dental goals..." class="w-full bg-gray-50 border-b-2 border-gray-100 px-0 py-4 focus:outline-none focus:border-gold transition-colors text-navy font-medium placeholder:text-gray-300 resize-none"></textarea>
                             </div>
 
-                            <button type="submit" class="w-full bg-navy text-white py-6 rounded-2xl font-bold gold-glow transition-all flex items-center justify-center gap-4 hover:-translate-y-1 tracking-[0.2em]">
+                            <button type="submit" class="w-full gold-gradient-bg text-white py-6 rounded-2xl font-bold gold-glow transition-all flex items-center justify-center gap-4 hover:-translate-y-1 tracking-[0.2em] btn-premium">
                                 CONFIRM RESERVATION <i data-lucide="arrow-right" class="w-5 h-5"></i>
                             </button>
                         </form>
