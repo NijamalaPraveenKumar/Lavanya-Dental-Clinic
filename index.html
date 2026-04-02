@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lavanya Dental Clinic | Crafting Confident Smiles</title>
+    <title>Lavanya Dental Clinic | Premium Luxury Oral Care</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -25,12 +25,23 @@
                 extend: {
                     fontFamily: {
                         serif: ['"Playfair Display"', 'serif'],
-                        sans: ['Poppins', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
                     },
                     colors: {
                         navy: '#0A1F44',
                         gold: '#D4AF37',
                         'gold-light': '#F4E4BC',
+                        'gold-dark': '#B8860B',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
                     }
                 }
             }
@@ -43,9 +54,10 @@
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: white;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
             color: #0A1F44;
+            overflow-x: hidden;
         }
 
         .font-serif {
@@ -53,44 +65,40 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 20px 40px -15px rgba(10, 31, 68, 0.1);
         }
 
-        .gold-glow:hover {
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        .gold-gradient-text {
+            background: linear-gradient(to right, #D4AF37, #F4E4BC, #B8860B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-blur {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .gold-glow {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .gold-glow:hover {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
         }
 
         [x-cloak] { display: none !important; }
 
-        /* Custom Animations */
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* Reveal on Scroll */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .reveal.active {
@@ -98,14 +106,46 @@
             transform: translateY(0);
         }
 
-        @media (max-width: 768px) {
-            section {
-                padding-top: 4rem !important;
-                padding-bottom: 4rem !important;
-            }
-            #home {
-                padding-top: 6rem !important;
-            }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0A1F44;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 20% 70%, rgba(10, 31, 68, 0.05) 0%, transparent 50%);
         }
     </style>
 </head>
@@ -120,185 +160,221 @@
             name: 'Anjali Sharma',
             role: 'Fashion Designer',
             text: 'Dr. Lavanya is a true artist. My smile makeover has given me so much confidence. The clinic feels more like a spa than a dentist\'s office!',
-            rating: 5
+            rating: 5,
+            image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop'
         },
         {
             name: 'Vikram Malhotra',
             role: 'Tech Entrepreneur',
             text: 'Professional, efficient, and painless. The dental implants look and feel completely natural. Highly recommended for premium care.',
-            rating: 5
+            rating: 5,
+            image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop'
         },
         {
             name: 'Priya Reddy',
             role: 'Architect',
             text: 'The attention to detail is incredible. They use the latest technology and the results speak for themselves. Best in the city.',
-            rating: 5
+            rating: 5,
+            image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop'
         }
     ]
 }" 
 @scroll.window="isScrolled = window.pageYOffset > 50; isVisible = window.pageYOffset > 500">
 
     <!-- Navbar -->
-    <nav :class="isScrolled ? 'nav-blur py-3 shadow-md' : 'bg-transparent py-6'" class="fixed top-0 w-full z-50 transition-all duration-300">
+    <nav :class="isScrolled ? 'nav-blur py-4 shadow-xl' : 'bg-transparent py-8'" class="fixed top-0 w-full z-50 transition-all duration-500">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="w-10 h-10 bg-navy rounded-full flex items-center justify-center border border-gold">
-                    <span class="text-gold font-serif font-bold text-xl">L</span>
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-navy rounded-2xl flex items-center justify-center border border-gold/30 gold-glow transition-transform hover:rotate-12">
+                    <span class="text-gold font-serif font-bold text-2xl">L</span>
                 </div>
-                <span class="font-serif text-base sm:text-xl md:text-2xl font-bold tracking-tight whitespace-nowrap text-navy">
-                    LAVANYA <span class="text-gold">DENTAL CLINIC</span>
-                </span>
+                <div class="flex flex-col">
+                    <span class="font-serif text-xl md:text-2xl font-bold tracking-tight text-navy leading-none">
+                        LAVANYA
+                    </span>
+                    <span class="text-[10px] tracking-[0.4em] text-gold font-bold uppercase mt-1">Dental Clinic</span>
+                </div>
             </div>
 
             <!-- Desktop Nav -->
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#home" class="text-sm font-medium hover:text-gold transition-colors uppercase tracking-widest">Home</a>
-                <a href="#about" class="text-sm font-medium hover:text-gold transition-colors uppercase tracking-widest">About</a>
-                <a href="#services" class="text-sm font-medium hover:text-gold transition-colors uppercase tracking-widest">Services</a>
-                <a href="#gallery" class="text-sm font-medium hover:text-gold transition-colors uppercase tracking-widest">Gallery</a>
-                <a href="#contact" class="text-sm font-medium hover:text-gold transition-colors uppercase tracking-widest">Contact</a>
-                <a href="#appointment" class="bg-navy text-white px-6 py-2.5 rounded-full text-sm font-semibold gold-glow transition-all border border-gold/30">BOOK NOW</a>
+            <div class="hidden lg:flex items-center gap-10">
+                <div class="flex items-center gap-8">
+                    <a href="#home" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70 hover:text-navy">Home</a>
+                    <a href="#about" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70 hover:text-navy">About</a>
+                    <a href="#services" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70 hover:text-navy">Services</a>
+                    <a href="#gallery" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70 hover:text-navy">Gallery</a>
+                    <a href="#contact" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70 hover:text-navy">Contact</a>
+                </div>
+                <div class="h-6 w-px bg-gold/20"></div>
+                <a href="#appointment" class="bg-navy text-white px-8 py-3 rounded-full text-xs font-bold gold-glow transition-all hover:-translate-y-1 active:translate-y-0 border border-gold/30 tracking-widest">
+                    BOOK APPOINTMENT
+                </a>
             </div>
 
             <!-- Mobile Toggle -->
-            <button class="md:hidden text-navy" @click="isMobileMenuOpen = !isMobileMenuOpen">
-                <i x-show="!isMobileMenuOpen" data-lucide="menu"></i>
-                <i x-show="isMobileMenuOpen" data-lucide="x"></i>
+            <button class="lg:hidden w-10 h-10 flex items-center justify-center text-navy" @click="isMobileMenuOpen = !isMobileMenuOpen">
+                <i x-show="!isMobileMenuOpen" data-lucide="menu" class="w-7 h-7"></i>
+                <i x-show="isMobileMenuOpen" data-lucide="x" class="w-7 h-7"></i>
             </button>
         </div>
 
         <!-- Mobile Menu -->
         <div x-show="isMobileMenuOpen" 
-             x-transition:enter="transition ease-out duration-200"
-             x-transition:enter-start="opacity-0 -translate-y-4"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 -translate-y-10"
              x-transition:enter-end="opacity-100 translate-y-0"
-             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave="transition ease-in duration-200"
              x-transition:leave-start="opacity-100 translate-y-0"
-             x-transition:leave-end="opacity-0 -translate-y-4"
-             class="absolute top-full left-0 w-full bg-white shadow-2xl py-8 px-6 flex flex-col gap-6 md:hidden border-t border-gold/10" x-cloak>
-            <a href="#home" @click="isMobileMenuOpen = false" class="text-lg font-medium text-navy hover:text-gold transition-colors">Home</a>
-            <a href="#about" @click="isMobileMenuOpen = false" class="text-lg font-medium text-navy hover:text-gold transition-colors">About</a>
-            <a href="#services" @click="isMobileMenuOpen = false" class="text-lg font-medium text-navy hover:text-gold transition-colors">Services</a>
-            <a href="#gallery" @click="isMobileMenuOpen = false" class="text-lg font-medium text-navy hover:text-gold transition-colors">Gallery</a>
-            <a href="#contact" @click="isMobileMenuOpen = false" class="text-lg font-medium text-navy hover:text-gold transition-colors">Contact</a>
-            <a href="#appointment" @click="isMobileMenuOpen = false" class="bg-navy text-white text-center py-4 rounded-xl font-bold">BOOK APPOINTMENT</a>
+             x-transition:leave-end="opacity-0 -translate-y-10"
+             class="absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl shadow-2xl py-10 px-8 flex flex-col gap-8 lg:hidden border-t border-gold/10" x-cloak>
+            <div class="flex flex-col gap-6">
+                <a href="#home" @click="isMobileMenuOpen = false" class="text-xl font-bold text-navy hover:text-gold transition-colors">Home</a>
+                <a href="#about" @click="isMobileMenuOpen = false" class="text-xl font-bold text-navy hover:text-gold transition-colors">About</a>
+                <a href="#services" @click="isMobileMenuOpen = false" class="text-xl font-bold text-navy hover:text-gold transition-colors">Services</a>
+                <a href="#gallery" @click="isMobileMenuOpen = false" class="text-xl font-bold text-navy hover:text-gold transition-colors">Gallery</a>
+                <a href="#contact" @click="isMobileMenuOpen = false" class="text-xl font-bold text-navy hover:text-gold transition-colors">Contact</a>
+            </div>
+            <a href="#appointment" @click="isMobileMenuOpen = false" class="bg-navy text-white text-center py-5 rounded-2xl font-bold tracking-widest gold-glow">
+                BOOK APPOINTMENT
+            </a>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section id="home" class="relative min-h-screen flex items-center overflow-hidden bg-white py-20">
-        <div class="absolute inset-0 z-0 opacity-10">
-            <div class="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-gold rounded-full blur-[120px]"></div>
-            <div class="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-navy rounded-full blur-[120px]"></div>
-        </div>
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden hero-gradient">
+        <!-- Background Elements -->
+        <div class="absolute top-1/4 -right-20 w-96 h-96 bg-gold/5 rounded-full blur-[100px] animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 -left-20 w-96 h-96 bg-navy/5 rounded-full blur-[100px] animate-pulse-slow"></div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
-            <div class="fade-in-up">
-                <span class="text-gold font-semibold tracking-[0.3em] uppercase text-sm mb-4 block">Premium Oral Care</span>
-                <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold text-navy leading-[1.1] mb-6">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+            <div class="reveal-left active">
+                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-8">
+                    <span class="w-2 h-2 rounded-full bg-gold animate-ping"></span>
+                    <span class="text-gold font-bold tracking-[0.2em] uppercase text-[10px]">Excellence in Dentistry</span>
+                </div>
+                <h1 class="text-5xl sm:text-7xl xl:text-8xl font-bold text-navy leading-[1.05] mb-8">
                     Crafting <br>
-                    <span class="italic font-normal text-gold">Confident</span> <br>
+                    <span class="italic font-normal gold-gradient-text">Confident</span> <br>
                     Smiles
                 </h1>
-                <p class="text-lg text-gray-600 mb-10 max-w-md leading-relaxed">
-                    Experience world-class dental excellence combined with luxury comfort. Your journey to a perfect smile begins here.
+                <p class="text-lg md:text-xl text-gray-500 mb-12 max-w-lg leading-relaxed font-medium">
+                    Experience the pinnacle of dental artistry and clinical precision in an environment of absolute luxury and care.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#appointment" class="bg-navy text-white px-8 py-4 rounded-full font-bold flex items-center gap-2 gold-glow transition-all">
-                        Book Appointment <i data-lucide="calendar" class="w-5 h-5"></i>
+                <div class="flex flex-col sm:flex-row gap-6">
+                    <a href="#appointment" class="bg-navy text-white px-10 py-5 rounded-2xl font-bold flex items-center justify-center gap-3 gold-glow transition-all hover:-translate-y-1 hover:shadow-2xl tracking-widest">
+                        RESERVE NOW <i data-lucide="arrow-right" class="w-5 h-5"></i>
                     </a>
-                    <a href="tel:+919876543210" class="border-2 border-navy text-navy px-8 py-4 rounded-full font-bold hover:bg-navy hover:text-white transition-all">
-                        Call Now
+                    <a href="tel:+919876543210" class="group flex items-center justify-center gap-4 px-10 py-5 rounded-2xl font-bold text-navy border-2 border-navy/10 hover:border-navy transition-all">
+                        <div class="w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center group-hover:bg-navy group-hover:text-white transition-colors">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                        </div>
+                        CONSULT NOW
                     </a>
                 </div>
                 
-                <div class="mt-12 flex items-center gap-4">
-                    <div class="flex -space-x-3">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop" class="w-10 h-10 rounded-full border-2 border-white object-cover" alt="Patient" referrerPolicy="no-referrer">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop" class="w-10 h-10 rounded-full border-2 border-white object-cover" alt="Patient" referrerPolicy="no-referrer">
-                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100&auto=format&fit=crop" class="w-10 h-10 rounded-full border-2 border-white object-cover" alt="Patient" referrerPolicy="no-referrer">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=100&auto=format&fit=crop" class="w-10 h-10 rounded-full border-2 border-white object-cover" alt="Patient" referrerPolicy="no-referrer">
+                <div class="mt-16 flex items-center gap-6 p-6 glass-card rounded-3xl inline-flex">
+                    <div class="flex -space-x-4">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop" class="w-12 h-12 rounded-2xl border-4 border-white object-cover shadow-lg" alt="Patient" referrerPolicy="no-referrer">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop" class="w-12 h-12 rounded-2xl border-4 border-white object-cover shadow-lg" alt="Patient" referrerPolicy="no-referrer">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100&auto=format&fit=crop" class="w-12 h-12 rounded-2xl border-4 border-white object-cover shadow-lg" alt="Patient" referrerPolicy="no-referrer">
+                        <div class="w-12 h-12 rounded-2xl border-4 border-white bg-gold flex items-center justify-center text-white text-xs font-bold shadow-lg">2K+</div>
                     </div>
-                    <div class="text-sm">
-                        <div class="flex text-gold">
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                    <div class="h-10 w-px bg-navy/10"></div>
+                    <div>
+                        <div class="flex text-gold mb-1">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         </div>
-                        <p class="text-gray-500 font-medium">Trusted by 2,000+ happy patients</p>
+                        <p class="text-navy/60 text-xs font-bold tracking-wide">TRUSTED WORLDWIDE</p>
                     </div>
                 </div>
             </div>
 
-            <div class="relative reveal">
-                <div class="relative z-10 rounded-[40px] overflow-hidden border-8 border-white shadow-2xl bg-gray-100">
+            <div class="relative reveal-right active lg:block hidden">
+                <div class="relative z-10 rounded-[60px] overflow-hidden border-[16px] border-white shadow-[0_50px_100px_-20px_rgba(10,31,68,0.25)] animate-float">
                     <img 
                         src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1200&auto=format&fit=crop" 
                         alt="Smiling Patient" 
-                        class="w-full h-[350px] md:h-[600px] object-cover"
+                        class="w-full h-[700px] object-cover"
                         referrerPolicy="no-referrer"
                     >
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent"></div>
                 </div>
-                <div class="absolute -bottom-6 -left-6 glass-card p-6 z-20 max-w-[200px]">
-                    <p class="text-navy font-serif italic text-lg leading-tight">"The best dental experience I've ever had."</p>
-                    <p class="text-gold text-xs font-bold mt-2 uppercase tracking-tighter">— Sarah Jenkins</p>
+                
+                <!-- Floating Stats -->
+                <div class="absolute -bottom-10 -left-10 glass-card p-8 z-20 rounded-[40px] max-w-[280px] animate-float" style="animation-delay: -2s">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-gold/20 flex items-center justify-center text-gold">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-navy leading-tight">Award Winning Clinic 2024</h4>
+                    </div>
+                    <p class="text-navy/50 text-sm leading-relaxed">Recognized for excellence in aesthetic dentistry and patient care.</p>
                 </div>
-                <div class="absolute -top-10 -right-10 w-40 h-40 border-2 border-gold/20 rounded-full animate-pulse"></div>
+
+                <div class="absolute top-20 -right-10 glass-card p-6 z-20 rounded-3xl animate-float" style="animation-delay: -4s">
+                    <div class="flex items-center gap-3">
+                        <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+                        <span class="text-navy font-bold text-sm">Open for Consultations</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- About -->
-    <section id="about" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="relative reveal">
-                    <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-gray-100">
+    <section id="about" class="py-32 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div class="relative reveal-left">
+                    <div class="aspect-[4/5] rounded-[60px] overflow-hidden shadow-2xl border-8 border-gray-50">
                         <img 
                             src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=1000&auto=format&fit=crop" 
                             alt="Dr. Lavanya" 
-                            class="w-full h-full object-cover"
+                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
                             referrerPolicy="no-referrer"
                         >
                     </div>
-                    <div class="absolute top-10 -left-10 w-32 h-32 bg-gold/10 rounded-full -z-10"></div>
-                    <div class="absolute bottom-10 -right-10 w-48 h-48 bg-navy/5 rounded-full -z-10"></div>
+                    <div class="absolute -bottom-12 -right-12 w-64 h-64 bg-gold/5 rounded-full -z-10 blur-3xl"></div>
+                    <div class="absolute -top-12 -left-12 w-64 h-64 bg-navy/5 rounded-full -z-10 blur-3xl"></div>
+                    
+                    <div class="absolute bottom-10 left-10 glass-card p-8 rounded-[40px] border-gold/30">
+                        <div class="text-4xl font-serif font-bold text-navy mb-1">15+</div>
+                        <div class="text-gold font-bold text-xs tracking-widest uppercase">Years of Artistry</div>
+                    </div>
                 </div>
 
-                <div class="reveal">
-                    <span class="text-gold font-semibold tracking-widest uppercase text-sm mb-4 block">Meet the Expert</span>
-                    <h2 class="text-5xl font-bold text-navy mb-6">Dr. Lavanya Reddy</h2>
-                    <p class="text-gold font-medium text-xl mb-8 font-serif italic">MDS, Prosthodontics & Implantology</p>
+                <div class="reveal-right">
+                    <div class="inline-block px-4 py-2 rounded-full bg-navy/5 text-navy font-bold text-[10px] tracking-[0.3em] uppercase mb-6">The Visionary</div>
+                    <h2 class="text-5xl md:text-6xl font-bold text-navy mb-8 leading-tight">Dr. Lavanya Reddy</h2>
+                    <p class="text-gold font-bold text-2xl mb-10 font-serif italic">MDS, Prosthodontics & Implantology</p>
                     
-                    <div class="space-y-6 text-gray-600 leading-relaxed">
+                    <div class="space-y-8 text-gray-500 text-lg leading-relaxed mb-12">
                         <p>
-                            With over 15 years of experience in aesthetic dentistry, Dr. Lavanya has dedicated her career to transforming lives through beautiful smiles. Her approach combines clinical precision with an artistic eye.
+                            With a career spanning over 15 years, Dr. Lavanya has redefined aesthetic dentistry by merging clinical precision with a deep understanding of facial harmony.
                         </p>
                         <p>
-                            She believes that every patient deserves a personalized treatment plan that respects their unique facial features and oral health goals.
+                            Her philosophy centers on "The Bespoke Smile" — a personalized approach where every treatment is tailored to the individual's unique character and aesthetic goals.
                         </p>
                     </div>
 
-                    <div class="mt-10 grid grid-cols-2 gap-6">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center text-gold">
-                                <i data-lucide="check-circle-2"></i>
+                    <div class="grid sm:grid-cols-2 gap-8">
+                        <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 transition-all hover:border-gold/30 hover:shadow-xl group">
+                            <div class="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-gold mb-6 group-hover:bg-gold group-hover:text-white transition-all">
+                                <i data-lucide="shield-check" class="w-7 h-7"></i>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-navy">15+ Years</h4>
-                                <p class="text-xs text-gray-500">Experience</p>
-                            </div>
+                            <h4 class="font-bold text-navy text-xl mb-2">Certified Expert</h4>
+                            <p class="text-sm text-gray-400">Board-certified specialist in advanced implantology.</p>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center text-gold">
-                                <i data-lucide="check-circle-2"></i>
+                        <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 transition-all hover:border-gold/30 hover:shadow-xl group">
+                            <div class="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-gold mb-6 group-hover:bg-gold group-hover:text-white transition-all">
+                                <i data-lucide="sparkles" class="w-7 h-7"></i>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-navy">5000+</h4>
-                                <p class="text-xs text-gray-500">Smiles Created</p>
-                            </div>
+                            <h4 class="font-bold text-navy text-xl mb-2">Smile Designer</h4>
+                            <p class="text-sm text-gray-400">Pioneer in digital smile design and aesthetic makeovers.</p>
                         </div>
                     </div>
                 </div>
@@ -307,71 +383,79 @@
     </section>
 
     <!-- Services -->
-    <section id="services" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="text-center mb-20 reveal">
-                <span class="text-gold font-semibold tracking-widest uppercase text-sm mb-4 block">Our Expertise</span>
-                <h2 class="text-5xl font-bold text-navy">Exceptional Services</h2>
-                <div class="w-24 h-1 bg-gold mx-auto mt-6 rounded-full"></div>
+    <section id="services" class="py-32 bg-gray-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-24 reveal">
+                <div class="inline-block px-4 py-2 rounded-full bg-gold/10 text-gold font-bold text-[10px] tracking-[0.3em] uppercase mb-6">Our Expertise</div>
+                <h2 class="text-5xl md:text-6xl font-bold text-navy mb-6">Bespoke Treatments</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">We offer a curated selection of advanced dental procedures designed to restore health and enhance beauty.</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Teeth Whitening -->
-                <div class="group glass-card p-8 hover:bg-navy hover:text-white transition-all duration-500 cursor-pointer overflow-hidden relative reveal">
-                    <div class="text-4xl mb-6 group-hover:scale-110 transition-transform duration-500">✨</div>
-                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition-colors">Teeth Whitening</h3>
-                    <p class="text-gray-600 group-hover:text-gray-300 transition-colors leading-relaxed mb-6">
-                        Brighten your smile by several shades with our advanced laser whitening technology.
-                    </p>
-                    <div class="flex items-center gap-2 text-gold font-bold text-sm">
-                        Learn More <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <div class="group glass-card p-10 rounded-[40px] hover:bg-navy transition-all duration-700 cursor-pointer overflow-hidden relative reveal">
+                    <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500">
+                        <i data-lucide="sparkles" class="w-8 h-8"></i>
                     </div>
-                    <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 -z-10">
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-white transition-colors">Teeth Whitening</h3>
+                    <p class="text-gray-500 group-hover:text-gray-300 transition-colors leading-relaxed mb-8">
+                        Advanced laser technology for a radiant, Hollywood-standard smile in a single session.
+                    </p>
+                    <div class="flex items-center gap-3 text-gold font-bold text-xs tracking-widest uppercase">
+                        Explore Service <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
+                    </div>
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 -z-10">
                         <img src="https://images.unsplash.com/photo-1588776814546-1ffce47267a5?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Teeth Whitening" referrerPolicy="no-referrer">
                     </div>
                 </div>
 
                 <!-- Dental Implants -->
-                <div class="group glass-card p-8 hover:bg-navy hover:text-white transition-all duration-500 cursor-pointer overflow-hidden relative reveal">
-                    <div class="text-4xl mb-6 group-hover:scale-110 transition-transform duration-500">🦷</div>
-                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition-colors">Dental Implants</h3>
-                    <p class="text-gray-600 group-hover:text-gray-300 transition-colors leading-relaxed mb-6">
-                        Permanent, natural-looking solutions for missing teeth using premium titanium implants.
-                    </p>
-                    <div class="flex items-center gap-2 text-gold font-bold text-sm">
-                        Learn More <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <div class="group glass-card p-10 rounded-[40px] hover:bg-navy transition-all duration-700 cursor-pointer overflow-hidden relative reveal" style="transition-delay: 0.1s">
+                    <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500">
+                        <i data-lucide="activity" class="w-8 h-8"></i>
                     </div>
-                    <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 -z-10">
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-white transition-colors">Dental Implants</h3>
+                    <p class="text-gray-500 group-hover:text-gray-300 transition-colors leading-relaxed mb-8">
+                        Premium titanium solutions that restore function and aesthetics with permanent precision.
+                    </p>
+                    <div class="flex items-center gap-3 text-gold font-bold text-xs tracking-widest uppercase">
+                        Explore Service <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
+                    </div>
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 -z-10">
                         <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Dental Implants" referrerPolicy="no-referrer">
                     </div>
                 </div>
 
                 <!-- Smile Design -->
-                <div class="group glass-card p-8 hover:bg-navy hover:text-white transition-all duration-500 cursor-pointer overflow-hidden relative reveal">
-                    <div class="text-4xl mb-6 group-hover:scale-110 transition-transform duration-500">💎</div>
-                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition-colors">Smile Design</h3>
-                    <p class="text-gray-600 group-hover:text-gray-300 transition-colors leading-relaxed mb-6">
-                        A comprehensive makeover using veneers, crowns, and contouring for your perfect look.
-                    </p>
-                    <div class="flex items-center gap-2 text-gold font-bold text-sm">
-                        Learn More <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <div class="group glass-card p-10 rounded-[40px] hover:bg-navy transition-all duration-700 cursor-pointer overflow-hidden relative reveal" style="transition-delay: 0.2s">
+                    <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500">
+                        <i data-lucide="gem" class="w-8 h-8"></i>
                     </div>
-                    <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 -z-10">
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-white transition-colors">Smile Design</h3>
+                    <p class="text-gray-500 group-hover:text-gray-300 transition-colors leading-relaxed mb-8">
+                        A holistic transformation using veneers and artistry to create your most confident look.
+                    </p>
+                    <div class="flex items-center gap-3 text-gold font-bold text-xs tracking-widest uppercase">
+                        Explore Service <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
+                    </div>
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 -z-10">
                         <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Smile Design" referrerPolicy="no-referrer">
                     </div>
                 </div>
 
                 <!-- Root Canal -->
-                <div class="group glass-card p-8 hover:bg-navy hover:text-white transition-all duration-500 cursor-pointer overflow-hidden relative reveal">
-                    <div class="text-4xl mb-6 group-hover:scale-110 transition-transform duration-500">🛡️</div>
-                    <h3 class="text-2xl font-bold mb-4 group-hover:text-gold transition-colors">Root Canal</h3>
-                    <p class="text-gray-600 group-hover:text-gray-300 transition-colors leading-relaxed mb-6">
-                        Painless, single-sitting root canal procedures to save your natural teeth.
-                    </p>
-                    <div class="flex items-center gap-2 text-gold font-bold text-sm">
-                        Learn More <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <div class="group glass-card p-10 rounded-[40px] hover:bg-navy transition-all duration-700 cursor-pointer overflow-hidden relative reveal" style="transition-delay: 0.3s">
+                    <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500">
+                        <i data-lucide="shield" class="w-8 h-8"></i>
                     </div>
-                    <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 -z-10">
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-white transition-colors">Root Canal</h3>
+                    <p class="text-gray-500 group-hover:text-gray-300 transition-colors leading-relaxed mb-8">
+                        Painless, microscopic endodontics focused on preserving your natural dental structure.
+                    </p>
+                    <div class="flex items-center gap-3 text-gold font-bold text-xs tracking-widest uppercase">
+                        Explore Service <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
+                    </div>
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 -z-10">
                         <img src="https://images.unsplash.com/photo-1445527815219-ecbfec67492e?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Root Canal" referrerPolicy="no-referrer">
                     </div>
                 </div>
@@ -380,59 +464,70 @@
     </section>
 
     <!-- Gallery -->
-    <section id="gallery" class="py-24 bg-navy text-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-                <div class="reveal">
-                    <span class="text-gold font-semibold tracking-widest uppercase text-sm mb-4 block">Transformation</span>
-                    <h2 class="text-5xl font-bold">Real Results</h2>
+    <section id="gallery" class="py-32 bg-navy text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gold/5 rounded-full blur-[150px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row justify-between items-end mb-24 gap-12">
+                <div class="reveal-left">
+                    <div class="inline-block px-4 py-2 rounded-full bg-gold/10 text-gold font-bold text-[10px] tracking-[0.3em] uppercase mb-6">Gallery</div>
+                    <h2 class="text-5xl md:text-7xl font-bold leading-tight">Masterpieces <br>of <span class="italic font-normal text-gold">Transformation</span></h2>
                 </div>
-                <p class="text-gray-400 max-w-md reveal">
-                    Witness the artistic precision and clinical excellence of our smile transformations. Every case is a masterpiece.
+                <p class="text-gray-400 max-w-md text-lg leading-relaxed reveal-right">
+                    Witness the clinical excellence and artistic precision behind our most successful smile transformations.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group relative reveal">
-                    <h4 class="text-center font-serif italic text-xl text-gold group-hover:text-white transition-colors">Smile Makeover</h4>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="group reveal" style="transition-delay: 0s">
+                    <div class="aspect-[4/5] rounded-[40px] overflow-hidden mb-8 border border-white/10 relative">
+                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110" alt="Smile Makeover" referrerPolicy="no-referrer">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <h4 class="text-center font-serif italic text-2xl text-gold group-hover:text-white transition-colors">Smile Makeover</h4>
                 </div>
-                <div class="group relative reveal">
-                    <h4 class="text-center font-serif italic text-xl text-gold group-hover:text-white transition-colors">Teeth Whitening</h4>
+                <div class="group reveal" style="transition-delay: 0.1s">
+                    <div class="aspect-[4/5] rounded-[40px] overflow-hidden mb-8 border border-white/10 relative">
+                        <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110" alt="Teeth Whitening" referrerPolicy="no-referrer">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <h4 class="text-center font-serif italic text-2xl text-gold group-hover:text-white transition-colors">Teeth Whitening</h4>
                 </div>
-                <div class="group relative reveal">
-                    <h4 class="text-center font-serif italic text-xl text-gold group-hover:text-white transition-colors">Dental Implants</h4>
+                <div class="group reveal" style="transition-delay: 0.2s">
+                    <div class="aspect-[4/5] rounded-[40px] overflow-hidden mb-8 border border-white/10 relative">
+                        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110" alt="Dental Implants" referrerPolicy="no-referrer">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <h4 class="text-center font-serif italic text-2xl text-gold group-hover:text-white transition-colors">Dental Implants</h4>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials -->
-    <section class="py-24 bg-white relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
-            <div class="absolute top-20 right-20 text-[200px] font-serif text-gold select-none">"</div>
-        </div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-            <div class="text-center mb-16 reveal">
-                <span class="text-gold font-semibold tracking-widest uppercase text-sm mb-4 block">Patient Stories</span>
-                <h2 class="text-5xl font-bold text-navy">What Our Clients Say</h2>
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-24 reveal">
+                <div class="inline-block px-4 py-2 rounded-full bg-navy/5 text-navy font-bold text-[10px] tracking-[0.3em] uppercase mb-6">Testimonials</div>
+                <h2 class="text-5xl md:text-6xl font-bold text-navy">Patient Stories</h2>
             </div>
 
-            <div class="relative max-w-4xl mx-auto">
-                <div class="overflow-hidden">
-                    <div class="flex transition-transform duration-500 ease-in-out" :style="`transform: translateX(-${activeIndex * 100}%)`">
+            <div class="relative max-w-5xl mx-auto">
+                <div class="overflow-hidden rounded-[60px] glass-card p-12 md:p-24">
+                    <div class="flex transition-transform duration-700 cubic-bezier(0.22, 1, 0.36, 1)" :style="`transform: translateX(-${activeIndex * 100}%)`">
                         <template x-for="(review, index) in reviews" :key="index">
                             <div class="w-full flex-shrink-0 px-4">
-                                <div class="glass-card p-12 md:p-20 relative text-center">
-                                    <div class="flex justify-center text-gold mb-8">
+                                <div class="text-center">
+                                    <div class="flex justify-center text-gold mb-12">
                                         <template x-for="i in review.rating">
-                                            <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                                            <i data-lucide="star" class="w-8 h-8 fill-current"></i>
                                         </template>
                                     </div>
-                                    <p class="text-2xl md:text-3xl text-navy font-serif italic mb-10 leading-relaxed" x-text="'&quot;' + review.text + '&quot;'"></p>
-                                    <div>
-                                        <h4 class="font-bold text-xl text-navy" x-text="review.name"></h4>
-                                        <p class="text-gold text-sm font-semibold uppercase tracking-widest mt-1" x-text="review.role"></p>
+                                    <p class="text-3xl md:text-4xl text-navy font-serif italic mb-16 leading-relaxed" x-text="'&quot;' + review.text + '&quot;'"></p>
+                                    <div class="flex flex-col items-center">
+                                        <img :src="review.image" class="w-20 h-20 rounded-2xl object-cover mb-6 shadow-xl border-4 border-white" alt="Patient">
+                                        <h4 class="font-bold text-2xl text-navy" x-text="review.name"></h4>
+                                        <p class="text-gold text-sm font-bold uppercase tracking-widest mt-2" x-text="review.role"></p>
                                     </div>
                                 </div>
                             </div>
@@ -441,19 +536,21 @@
                 </div>
 
                 <!-- Navigation -->
-                <div class="flex justify-center gap-4 mt-12">
+                <div class="flex justify-center gap-6 mt-16">
                     <button @click="activeIndex = (activeIndex - 1 + reviews.length) % reviews.length"
-                            class="w-12 h-12 rounded-full border border-gold/30 flex items-center justify-center text-navy hover:bg-gold hover:text-white transition-all">
-                        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                            class="w-16 h-16 rounded-2xl border-2 border-navy/5 flex items-center justify-center text-navy hover:bg-navy hover:text-white transition-all hover:shadow-2xl">
+                        <i data-lucide="chevron-left" class="w-8 h-8"></i>
                     </button>
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-3">
                         <template x-for="(review, index) in reviews" :key="index">
-                            <div :class="activeIndex === index ? 'w-8 bg-gold' : 'bg-gray-200'" class="w-2 h-2 rounded-full transition-all duration-300"></div>
+                            <button @click="activeIndex = index" 
+                                    :class="activeIndex === index ? 'w-12 bg-gold' : 'w-3 bg-gray-200'" 
+                                    class="h-3 rounded-full transition-all duration-500"></button>
                         </template>
                     </div>
                     <button @click="activeIndex = (activeIndex + 1) % reviews.length"
-                            class="w-12 h-12 rounded-full border border-gold/30 flex items-center justify-center text-navy hover:bg-gold hover:text-white transition-all">
-                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                            class="w-16 h-16 rounded-2xl border-2 border-navy/5 flex items-center justify-center text-navy hover:bg-navy hover:text-white transition-all hover:shadow-2xl">
+                        <i data-lucide="chevron-right" class="w-8 h-8"></i>
                     </button>
                 </div>
             </div>
@@ -461,86 +558,91 @@
     </section>
 
     <!-- Appointment Form -->
-    <section id="appointment" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="bg-white rounded-[40px] shadow-2xl overflow-hidden grid md:grid-cols-2 reveal">
-                <div class="p-12 md:p-20 bg-navy text-white relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl"></div>
-                    <h2 class="text-5xl font-bold mb-8 relative z-10">Book Your <br><span class="text-gold">Consultation</span></h2>
-                    <p class="text-gray-400 mb-12 relative z-10 max-w-md">
-                        Take the first step towards your dream smile. Our team will contact you within 24 hours to confirm your preferred slot.
-                    </p>
+    <section id="appointment" class="py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-white rounded-[60px] shadow-[0_50px_100px_-20px_rgba(10,31,68,0.15)] overflow-hidden grid lg:grid-cols-2 reveal">
+                <div class="p-16 md:p-24 bg-navy text-white relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-[100px]"></div>
+                    <div class="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-[80px]"></div>
                     
-                    <div class="space-y-8 relative z-10">
-                        <div class="flex items-center gap-6">
-                            <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gold">
-                                <i data-lucide="phone"></i>
+                    <div class="relative z-10">
+                        <div class="inline-block px-4 py-2 rounded-full bg-white/10 text-gold font-bold text-[10px] tracking-[0.3em] uppercase mb-8">Reservations</div>
+                        <h2 class="text-5xl md:text-6xl font-bold mb-10 leading-tight">Begin Your <br><span class="text-gold">Journey</span></h2>
+                        <p class="text-gray-400 mb-16 text-lg leading-relaxed max-w-md">
+                            Our concierge team is dedicated to providing you with a seamless and luxurious experience from the moment you reach out.
+                        </p>
+                        
+                        <div class="space-y-10">
+                            <div class="flex items-center gap-8 group">
+                                <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all">
+                                    <i data-lucide="phone" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-1">Direct Line</p>
+                                    <p class="text-2xl font-bold">+91 98765 43210</p>
+                                </div>
                             </div>
-                            <div>
-                                <p class="text-xs text-gray-500 uppercase tracking-widest">Call Us</p>
-                                <p class="text-xl font-bold">+91 98765 43210</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-6">
-                            <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gold">
-                                <i data-lucide="mail"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-500 uppercase tracking-widest">Email Us</p>
-                                <p class="text-base md:text-xl font-bold break-all">care@lavanyadental.com</p>
+                            <div class="flex items-center gap-8 group">
+                                <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all">
+                                    <i data-lucide="mail" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-1">Concierge Email</p>
+                                    <p class="text-2xl font-bold break-all">care@lavanyadental.com</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="p-12 md:p-20 flex flex-col justify-center">
+                <div class="p-16 md:p-24 flex flex-col justify-center">
                     <div x-show="!isSubmitted">
-                        <form @submit.prevent="isSubmitted = true; setTimeout(() => isSubmitted = false, 5000)" class="space-y-6">
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div class="space-y-2">
-                                    <label class="text-xs font-bold text-navy uppercase tracking-widest">Full Name</label>
-                                    <input required type="text" placeholder="John Doe" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-gold transition-colors">
+                        <form @submit.prevent="isSubmitted = true; setTimeout(() => isSubmitted = false, 5000)" class="space-y-8">
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div class="space-y-3">
+                                    <label class="text-[10px] font-bold text-navy uppercase tracking-[0.2em]">Full Name</label>
+                                    <input required type="text" placeholder="John Doe" class="w-full bg-gray-50 border-b-2 border-gray-100 px-0 py-4 focus:outline-none focus:border-gold transition-colors text-navy font-medium placeholder:text-gray-300">
                                 </div>
-                                <div class="space-y-2">
-                                    <label class="text-xs font-bold text-navy uppercase tracking-widest">Phone Number</label>
-                                    <input required type="tel" placeholder="+91 00000 00000" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-gold transition-colors">
+                                <div class="space-y-3">
+                                    <label class="text-[10px] font-bold text-navy uppercase tracking-[0.2em]">Phone Number</label>
+                                    <input required type="tel" placeholder="+91 00000 00000" class="w-full bg-gray-50 border-b-2 border-gray-100 px-0 py-4 focus:outline-none focus:border-gold transition-colors text-navy font-medium placeholder:text-gray-300">
                                 </div>
                             </div>
                             
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold text-navy uppercase tracking-widest">Service Interested In</label>
-                                <select class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-gold transition-colors appearance-none">
-                                    <option>Smile Design</option>
-                                    <option>Teeth Whitening</option>
-                                    <option>Dental Implants</option>
-                                    <option>General Checkup</option>
+                            <div class="space-y-3">
+                                <label class="text-[10px] font-bold text-navy uppercase tracking-[0.2em]">Select Service</label>
+                                <select class="w-full bg-gray-50 border-b-2 border-gray-100 px-0 py-4 focus:outline-none focus:border-gold transition-colors text-navy font-medium appearance-none cursor-pointer">
+                                    <option>Smile Design Makeover</option>
+                                    <option>Teeth Whitening Spa</option>
+                                    <option>Premium Dental Implants</option>
+                                    <option>General Oral Wellness</option>
                                 </select>
                             </div>
 
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold text-navy uppercase tracking-widest">Preferred Date</label>
-                                <input required type="date" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-gold transition-colors">
+                            <div class="space-y-3">
+                                <label class="text-[10px] font-bold text-navy uppercase tracking-[0.2em]">Preferred Date</label>
+                                <input required type="date" class="w-full bg-gray-50 border-b-2 border-gray-100 px-0 py-4 focus:outline-none focus:border-gold transition-colors text-navy font-medium cursor-pointer">
                             </div>
 
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold text-navy uppercase tracking-widest">Message (Optional)</label>
-                                <textarea rows={4} placeholder="Tell us about your dental goals..." class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-gold transition-colors"></textarea>
+                            <div class="space-y-3">
+                                <label class="text-[10px] font-bold text-navy uppercase tracking-[0.2em]">Special Requests</label>
+                                <textarea rows="3" placeholder="Tell us about your dental goals..." class="w-full bg-gray-50 border-b-2 border-gray-100 px-0 py-4 focus:outline-none focus:border-gold transition-colors text-navy font-medium placeholder:text-gray-300 resize-none"></textarea>
                             </div>
 
-                            <button type="submit" class="w-full bg-navy text-white py-5 rounded-xl font-bold gold-glow transition-all flex items-center justify-center gap-3">
-                                CONFIRM APPOINTMENT <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                            <button type="submit" class="w-full bg-navy text-white py-6 rounded-2xl font-bold gold-glow transition-all flex items-center justify-center gap-4 hover:-translate-y-1 tracking-[0.2em]">
+                                CONFIRM RESERVATION <i data-lucide="arrow-right" class="w-5 h-5"></i>
                             </button>
                         </form>
                     </div>
-                    <div x-show="isSubmitted" class="text-center space-y-6" x-cloak>
-                        <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto">
-                            <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+                    <div x-show="isSubmitted" class="text-center space-y-8" x-cloak>
+                        <div class="w-24 h-24 bg-green-50 text-green-500 rounded-[32px] flex items-center justify-center mx-auto shadow-sm">
+                            <i data-lucide="check-circle" class="w-12 h-12"></i>
                         </div>
-                        <h3 class="text-3xl font-bold text-navy">Request Received!</h3>
-                        <p class="text-gray-600">
-                            Thank you for choosing Lavanya Dental. Our concierge will contact you shortly to finalize your appointment.
+                        <h3 class="text-4xl font-bold text-navy">Request Received</h3>
+                        <p class="text-gray-500 text-lg leading-relaxed">
+                            Thank you for choosing Lavanya Dental Clinic. Our concierge will contact you shortly to finalize your bespoke appointment.
                         </p>
-                        <button @click="isSubmitted = false" class="text-gold font-bold uppercase tracking-widest text-sm hover:underline">
+                        <button @click="isSubmitted = false" class="text-gold font-bold uppercase tracking-[0.3em] text-[10px] hover:text-navy transition-colors">
                             Send another request
                         </button>
                     </div>
@@ -550,71 +652,90 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="max-w-3xl mx-auto text-center reveal">
-                <h2 class="text-4xl font-bold text-navy mb-12">Visit Our Clinic</h2>
-                
-                <div class="grid md:grid-cols-2 gap-12 mb-12">
-                    <div class="flex flex-col items-center gap-4 p-8 rounded-3xl bg-gray-50 border border-gray-100 transition-all hover:shadow-lg">
-                        <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold">
-                            <i data-lucide="map-pin"></i>
+    <section id="contact" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div class="reveal-left">
+                    <div class="inline-block px-4 py-2 rounded-full bg-navy/5 text-navy font-bold text-[10px] tracking-[0.3em] uppercase mb-6">Location</div>
+                    <h2 class="text-5xl md:text-6xl font-bold text-navy mb-12 leading-tight">Visit Our <br><span class="italic font-normal text-gold">Sanctuary</span></h2>
+                    
+                    <div class="space-y-12">
+                        <div class="flex gap-8 group">
+                            <div class="w-16 h-16 rounded-3xl bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all flex-shrink-0">
+                                <i data-lucide="map-pin" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-navy text-2xl mb-3">The Clinic</h4>
+                                <p class="text-gray-500 text-lg leading-relaxed">Kaluvoya, Nellore,<br>Andhra Pradesh – 524343</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-navy text-xl mb-2">Location</h4>
-                            <p class="text-gray-500">Kaluvoya, Nellore,<br>Andhra Pradesh – 524343</p>
+
+                        <div class="flex gap-8 group">
+                            <div class="w-16 h-16 rounded-3xl bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all flex-shrink-0">
+                                <i data-lucide="clock" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-navy text-2xl mb-3">Bespoke Hours</h4>
+                                <p class="text-gray-500 text-lg leading-relaxed">Mon - Sat: 10:00 AM - 08:00 PM<br>Sunday: By Private Appointment</p>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="flex flex-col items-center gap-4 p-8 rounded-3xl bg-gray-50 border border-gray-100 transition-all hover:shadow-lg">
-                        <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold">
-                            <i data-lucide="clock"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-navy text-xl mb-2">Working Hours</h4>
-                            <p class="text-gray-500">Mon - Sat: 10:00 AM - 08:00 PM<br>Sunday: By Appointment Only</p>
-                        </div>
+                    
+                    <div class="flex gap-6 mt-16">
+                        <a href="#" class="w-16 h-16 rounded-2xl border-2 border-navy/5 flex items-center justify-center text-navy hover:bg-gold hover:border-gold hover:text-white transition-all shadow-sm">
+                            <i data-lucide="instagram" class="w-7 h-7"></i>
+                        </a>
+                        <a href="#" class="w-16 h-16 rounded-2xl border-2 border-navy/5 flex items-center justify-center text-navy hover:bg-gold hover:border-gold hover:text-white transition-all shadow-sm">
+                            <i data-lucide="facebook" class="w-7 h-7"></i>
+                        </a>
+                        <a href="#" class="w-16 h-16 rounded-2xl border-2 border-navy/5 flex items-center justify-center text-navy hover:bg-gold hover:border-gold hover:text-white transition-all shadow-sm">
+                            <i data-lucide="twitter" class="w-7 h-7"></i>
+                        </a>
                     </div>
                 </div>
-                
-                <div class="flex justify-center gap-6">
-                    <a href="#" class="w-14 h-14 rounded-full border border-gray-200 flex items-center justify-center text-navy hover:bg-gold hover:border-gold hover:text-white transition-all shadow-sm">
-                        <i data-lucide="instagram"></i>
-                    </a>
-                    <a href="#" class="w-14 h-14 rounded-full border border-gray-200 flex items-center justify-center text-navy hover:bg-gold hover:border-gold hover:text-white transition-all shadow-sm">
-                        <i data-lucide="facebook"></i>
-                    </a>
-                    <a href="#" class="w-14 h-14 rounded-full border border-gray-200 flex items-center justify-center text-navy hover:bg-gold hover:border-gold hover:text-white transition-all shadow-sm">
-                        <i data-lucide="twitter"></i>
-                    </a>
+
+                <div class="reveal-right">
+                    <div class="rounded-[60px] overflow-hidden shadow-2xl border-8 border-gray-50 h-[600px] relative">
+                        <!-- Mock Map / Image -->
+                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Clinic Interior">
+                        <div class="absolute inset-0 bg-navy/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <a href="https://maps.google.com" target="_blank" class="bg-white text-navy px-10 py-5 rounded-2xl font-bold shadow-2xl flex items-center gap-3 hover:-translate-y-1 transition-all tracking-widest">
+                                GET DIRECTIONS <i data-lucide="external-link" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-navy py-16 text-white border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
-                <div class="flex items-center gap-2">
-                    <div class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center border border-gold/30">
-                        <span class="text-gold font-serif font-bold text-xl">L</span>
+    <footer class="bg-navy py-24 text-white relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gold"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-16 mb-20">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-gold/30">
+                        <span class="text-gold font-serif font-bold text-3xl">L</span>
                     </div>
-                    <span class="font-serif text-lg sm:text-2xl font-bold tracking-tight whitespace-nowrap">
-                        LAVANYA <span class="text-gold">DENTAL CLINIC</span>
-                    </span>
+                    <div class="flex flex-col">
+                        <span class="font-serif text-3xl font-bold tracking-tight">LAVANYA</span>
+                        <span class="text-[10px] tracking-[0.5em] text-gold font-bold uppercase">Dental Clinic</span>
+                    </div>
                 </div>
                 
-                <div class="flex flex-wrap justify-center gap-8 text-sm font-medium text-gray-400">
-                    <a href="#" class="hover:text-gold transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-gold transition-colors">Terms of Service</a>
-                    <a href="#" class="hover:text-gold transition-colors">Patient Portal</a>
+                <div class="flex flex-wrap gap-12 text-xs font-bold tracking-[0.2em] uppercase text-gray-400">
+                    <a href="#" class="hover:text-gold transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-gold transition-colors">Terms</a>
+                    <a href="#" class="hover:text-gold transition-colors">Portal</a>
                     <a href="#" class="hover:text-gold transition-colors">FAQ</a>
                 </div>
             </div>
             
-            <div class="pt-8 border-t border-white/5 text-center text-gray-500 text-xs tracking-[0.2em] uppercase">
-                © <span x-text="new Date().getFullYear()"></span> Lavanya Dental Clinic. All Rights Reserved. Designed for Excellence.
+            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-gray-500 text-[10px] tracking-[0.3em] uppercase font-bold">
+                <p>© <span x-text="new Date().getFullYear()"></span> Lavanya Dental Clinic. All Rights Reserved.</p>
+                <p>Designed for Absolute Excellence</p>
             </div>
         </div>
     </footer>
@@ -623,22 +744,23 @@
     <a href="https://wa.me/919876543210"
        target="_blank"
        rel="noopener noreferrer"
-       class="fixed bottom-8 right-8 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl z-[100] cursor-pointer hover:scale-110 transition-transform">
-        <i data-lucide="message-circle" class="w-8 h-8 fill-current"></i>
-        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded-full animate-bounce">1</span>
+       class="fixed bottom-10 right-10 w-20 h-20 bg-[#25D366] text-white rounded-[32px] flex items-center justify-center shadow-[0_20px_50px_rgba(37,211,102,0.4)] z-[100] cursor-pointer hover:scale-110 hover:-translate-y-2 transition-all duration-500 group">
+        <i data-lucide="message-circle" class="w-10 h-10 fill-current"></i>
+        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold px-3 py-1.5 rounded-full animate-bounce shadow-lg">1</span>
+        <div class="absolute right-full mr-4 bg-white text-navy px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-xl pointer-events-none">Chat with us</div>
     </a>
 
     <!-- Scroll To Top -->
     <button x-show="isVisible" 
-            x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0 scale-50"
-            x-transition:enter-end="opacity-100 scale-100"
+            x-transition:enter="transition ease-out duration-500"
+            x-transition:enter-start="opacity-0 translate-y-10"
+            x-transition:enter-end="opacity-100 translate-y-0"
             x-transition:leave="transition ease-in duration-300"
-            x-transition:leave-start="opacity-100 scale-100"
-            x-transition:leave-end="opacity-0 scale-50"
+            x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 translate-y-10"
             @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-            class="fixed bottom-28 right-8 w-12 h-12 bg-navy text-gold rounded-full flex items-center justify-center shadow-2xl z-[100] border border-gold/30 hover:bg-gold hover:text-navy transition-all" x-cloak>
-        <i data-lucide="chevron-right" class="w-6 h-6 -rotate-90"></i>
+            class="fixed bottom-36 right-12 w-14 h-14 bg-navy text-gold rounded-2xl flex items-center justify-center shadow-2xl z-[100] border border-gold/30 hover:bg-gold hover:text-navy transition-all hover:-translate-y-1" x-cloak>
+        <i data-lucide="chevron-up" class="w-7 h-7"></i>
     </button>
 
     <script>
@@ -647,11 +769,11 @@
 
         // Reveal on Scroll Logic
         function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
+            var reveals = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
+                var elementVisible = 100;
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
                 }
