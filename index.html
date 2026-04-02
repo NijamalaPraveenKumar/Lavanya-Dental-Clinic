@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Lavanya Dental Clinic | Premium Luxury Oral Care</title>
     
     <!-- Fonts -->
@@ -89,9 +89,19 @@
         }
 
         .nav-blur {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .nav-transition {
+            transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: padding, background-color, backdrop-filter;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
         }
 
         .gold-glow {
@@ -244,10 +254,11 @@
         }
     ]
 }" 
-@scroll.window="isScrolled = window.pageYOffset > 50; isVisible = window.pageYOffset > 500">
+@scroll.window="isScrolled = window.scrollY > 20; isVisible = window.scrollY > 500">
 
     <!-- Navbar -->
-    <nav :class="isScrolled ? 'nav-blur py-4 shadow-xl' : 'bg-transparent py-8'" class="fixed top-0 w-full z-50 transition-all duration-500">
+    <nav :class="isScrolled ? 'nav-blur py-3 md:py-4 shadow-xl' : 'bg-white/10 md:bg-transparent py-5 md:py-8 backdrop-blur-md md:backdrop-blur-none'" 
+         class="fixed top-0 left-0 right-0 w-full z-[110] nav-transition">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <div class="w-12 h-12 bg-navy rounded-2xl flex items-center justify-center border border-gold/30 gold-glow transition-transform hover:rotate-12">
@@ -291,7 +302,7 @@
              x-transition:leave="transition ease-in duration-200"
              x-transition:leave-start="opacity-100 translate-y-0"
              x-transition:leave-end="opacity-0 -translate-y-10"
-             class="absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl shadow-2xl py-10 px-8 flex flex-col gap-8 lg:hidden border-t border-gold/10" x-cloak>
+             class="absolute top-full left-0 w-full bg-white shadow-2xl py-10 px-8 flex flex-col gap-8 lg:hidden border-t border-gold/10 max-h-[80vh] overflow-y-auto" x-cloak>
             <div class="flex flex-col gap-6">
                 <a href="#home" @click="isMobileMenuOpen = false" class="text-xl font-bold text-navy hover:text-gold transition-colors">Home</a>
                 <a href="#about" @click="isMobileMenuOpen = false" class="text-xl font-bold text-navy hover:text-gold transition-colors">About</a>
