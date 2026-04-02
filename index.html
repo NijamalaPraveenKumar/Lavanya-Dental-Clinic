@@ -49,6 +49,12 @@
     </script>
 
     <style>
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -57,7 +63,6 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #ffffff;
             color: #0A1F44;
-            overflow-x: hidden;
         }
 
         .font-serif {
@@ -254,10 +259,10 @@
         }
     ]
 }" 
-@scroll.window="isScrolled = window.scrollY > 20; isVisible = window.scrollY > 500">
+@scroll.window="isScrolled = (window.scrollY || window.pageYOffset) > 20; isVisible = (window.scrollY || window.pageYOffset) > 500">
 
     <!-- Navbar -->
-    <nav :class="isScrolled ? 'nav-blur py-3 md:py-4 shadow-xl' : 'bg-white/10 md:bg-transparent py-5 md:py-8 backdrop-blur-md md:backdrop-blur-none'" 
+    <nav :class="isScrolled ? 'nav-blur py-3 md:py-4 shadow-xl' : 'bg-white/95 md:bg-transparent py-4 md:py-8 backdrop-blur-md md:backdrop-blur-none'" 
          class="fixed top-0 left-0 right-0 w-full z-[110] nav-transition">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <div class="flex items-center gap-3">
