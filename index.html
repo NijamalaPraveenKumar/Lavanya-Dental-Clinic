@@ -158,8 +158,14 @@
 
         .reveal-right {
             opacity: 0;
-            transform: translateX(30px);
+            transform: translateX(20px);
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        @media (max-width: 768px) {
+            .reveal-left, .reveal-right {
+                transform: translateY(20px);
+            }
         }
 
         .reveal-right.active {
@@ -271,7 +277,7 @@
 
     <!-- Navbar -->
     <nav :class="isScrolled ? 'nav-blur py-3 md:py-4 shadow-xl' : 'bg-white/95 md:bg-transparent py-4 md:py-8 backdrop-blur-md md:backdrop-blur-none'" 
-         class="fixed top-0 left-0 right-0 w-full z-[110] nav-transition">
+         class="fixed top-0 left-0 right-0 z-[110] nav-transition">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <div class="w-12 h-12 bg-navy rounded-2xl flex items-center justify-center border border-gold/30 gold-glow transition-transform hover:rotate-12">
@@ -346,14 +352,14 @@
 
         <div class="max-w-7xl mx-auto px-6 relative z-20 w-full">
             <div class="reveal flex flex-col items-center text-center max-w-4xl mx-auto">
-                <a href="https://wa.me/919390739842?text=Hello%2C%20I%20want%20to%20book%20an%20appointment" target="_blank" class="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-white/5 border border-white/10 mb-12 mt-4 hover:bg-gold/20 hover:border-gold/30 transition-all group backdrop-blur-xl shadow-2xl">
-                    <span class="relative flex h-3 w-3">
+                <a href="https://wa.me/919390739842?text=Hello%2C%20I%20want%20to%20book%20an%20appointment" target="_blank" class="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-8 py-3 sm:py-4 rounded-full bg-white/5 border border-white/10 mb-12 mt-4 hover:bg-gold/20 hover:border-gold/30 transition-all group backdrop-blur-xl shadow-2xl max-w-full">
+                    <span class="relative flex h-3 w-3 flex-shrink-0">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-3 w-3 bg-gold"></span>
                     </span>
-                    <span class="text-gold font-bold tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[10px] sm:text-[11px] group-hover:text-white transition-colors">Open for Consultations</span>
+                    <span class="text-gold font-bold tracking-[0.15em] sm:tracking-[0.3em] uppercase text-[9px] sm:text-[11px] group-hover:text-white transition-colors truncate">Open for Consultations</span>
                 </a>
-                <h1 class="text-4xl sm:text-8xl xl:text-9xl font-black text-white leading-[1.1] mb-12 tracking-tighter uppercase">
+                <h1 class="text-2xl xs:text-3xl sm:text-8xl xl:text-9xl font-black text-white leading-[1.1] mb-12 tracking-tighter uppercase">
                     Your <span class="gold-gradient-text">Smile</span>, <br>
                     Our <span class="italic font-light opacity-80">Passion</span>
                 </h1>
@@ -396,11 +402,11 @@
     </section>
 
     <!-- About -->
-    <section id="about" class="py-32 bg-white relative">
+    <section id="about" class="py-20 md:py-32 bg-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-24 items-center">
-                <div class="relative reveal-left">
-                    <div class="aspect-[4/5] rounded-[40px] md:rounded-[60px] overflow-hidden shadow-2xl border-4 md:border-8 border-gray-50">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+                <div class="relative reveal-left w-full max-w-md mx-auto lg:max-w-none">
+                    <div class="aspect-[4/5] rounded-[40px] md:rounded-[60px] overflow-hidden shadow-2xl border-4 md:border-8 border-gray-50 relative z-10">
                         <img 
                             src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=1000&auto=format&fit=crop" 
                             alt="Dr. Lavanya" 
@@ -408,30 +414,30 @@
                             referrerPolicy="no-referrer"
                         >
                     </div>
-                    <div class="absolute -bottom-12 -right-12 w-64 h-64 bg-gold/5 rounded-full -z-10 blur-3xl"></div>
-                    <div class="absolute -top-12 -left-12 w-64 h-64 bg-navy/5 rounded-full -z-10 blur-3xl"></div>
+                    <div class="absolute -bottom-6 -right-6 md:-bottom-12 md:-right-12 w-48 h-48 md:w-64 md:h-64 bg-gold/5 rounded-full -z-10 blur-3xl"></div>
+                    <div class="absolute -top-6 -left-6 md:-top-12 md:-left-12 w-48 h-48 md:w-64 md:h-64 bg-navy/5 rounded-full -z-10 blur-3xl"></div>
                     
-                    <div class="absolute bottom-10 left-10 glass-card p-8 rounded-[40px] border-gold/30">
-                        <div class="text-4xl font-serif font-bold text-navy mb-1">5+</div>
-                        <div class="text-gold font-bold text-xs tracking-widest uppercase">Years of Artistry</div>
+                    <div class="absolute bottom-6 left-6 md:bottom-10 md:left-10 glass-card p-5 md:p-8 rounded-[30px] md:rounded-[40px] border-gold/30 z-20">
+                        <div class="text-2xl md:text-4xl font-serif font-bold text-navy mb-1">5+</div>
+                        <div class="text-gold font-bold text-[10px] md:text-xs tracking-widest uppercase">Years of Artistry</div>
                     </div>
                 </div>
 
-                <div class="reveal-right text-center lg:text-left">
+                <div class="reveal-right text-center lg:text-left mt-12 lg:mt-0">
                     <div class="inline-block px-6 py-2 rounded-full bg-navy/5 text-navy font-bold text-[11px] tracking-[0.4em] uppercase mb-10 border border-navy/10">The Visionary</div>
                     <div class="mb-14">
-                        <h2 class="text-[22px] xs:text-[26px] sm:text-6xl md:text-8xl lg:text-5xl xl:text-6xl font-black text-navy leading-[0.9] mb-6 tracking-tighter uppercase whitespace-nowrap">
+                        <h2 class="text-[16px] xs:text-[20px] sm:text-6xl md:text-8xl lg:text-5xl xl:text-6xl font-black text-navy leading-[0.9] mb-6 tracking-tighter uppercase sm:whitespace-nowrap">
                             Dr. Lavanya <span class="gold-gradient-text">Reddy</span>
                         </h2>
                         <div class="flex flex-col items-center lg:flex-row lg:items-center gap-4">
-                            <p class="text-gold font-bold text-[11px] sm:text-sm md:text-base tracking-[0.3em] sm:tracking-[0.4em] uppercase">Dental Specialist</p>
+                            <p class="text-gold font-bold text-[10px] sm:text-sm md:text-base tracking-[0.2em] sm:tracking-[0.4em] uppercase">Dental Specialist</p>
                             <div class="hidden lg:block h-1 w-8 bg-gold/30 rounded-full"></div>
-                            <p class="text-navy/40 font-bold text-[11px] sm:text-sm md:text-base tracking-[0.3em] sm:tracking-[0.4em] uppercase">Aesthetic Surgeon</p>
+                            <p class="text-navy/40 font-bold text-[10px] sm:text-sm md:text-base tracking-[0.2em] sm:tracking-[0.4em] uppercase">Aesthetic Surgeon</p>
                         </div>
                     </div>
-                    <p class="text-navy/80 font-bold text-base sm:text-2xl md:text-3xl lg:text-xl xl:text-2xl mb-12 font-serif italic lg:border-l-4 lg:border-gold lg:pl-6 mx-auto lg:mx-0 max-w-md lg:max-w-none">MDS, Prosthodontics & Implantology</p>
+                    <p class="text-navy/80 font-bold text-sm sm:text-2xl md:text-3xl lg:text-xl xl:text-2xl mb-12 font-serif italic lg:border-l-4 lg:border-gold lg:pl-6 mx-auto lg:mx-0 max-w-md lg:max-w-none px-4 lg:px-0 text-center lg:text-left">MDS, Prosthodontics & Implantology</p>
                     
-                    <div class="space-y-8 text-gray-500 text-lg leading-relaxed mb-12 text-center lg:text-left">
+                    <div class="space-y-8 text-gray-500 text-lg leading-relaxed mb-12 text-center lg:text-left px-4 lg:px-0">
                         <p>
                             With over 5 years of dedicated practice, Dr. Lavanya Reddy has transformed thousands of lives through her unique blend of clinical mastery and aesthetic vision.
                         </p>
@@ -440,7 +446,7 @@
                         </p>
                     </div>
 
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 mb-12">
+                    <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-6 mb-12">
                         <div class="text-center p-6 rounded-3xl bg-gray-50 border border-gray-100">
                             <div class="text-3xl font-bold text-navy mb-1">15k+</div>
                             <div class="text-[10px] text-gold font-bold uppercase tracking-widest">Smiles Crafted</div>
