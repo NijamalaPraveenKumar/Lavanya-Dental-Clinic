@@ -23,6 +23,9 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    screens: {
+                        'xs': '375px',
+                    },
                     fontFamily: {
                         serif: ['"Playfair Display"', 'serif'],
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
@@ -214,8 +217,8 @@
             }
             
             section {
-                padding-top: 5rem !important;
-                padding-bottom: 5rem !important;
+                padding-top: 4rem !important;
+                padding-bottom: 4rem !important;
             }
 
             h1 {
@@ -224,7 +227,12 @@
             }
 
             h2 {
-                font-size: 2.75rem !important;
+                font-size: 2.25rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            .glass-card {
+                padding: 2rem !important;
             }
         }
     </style>
@@ -270,7 +278,7 @@
                     <span class="text-gold font-serif font-bold text-2xl">L</span>
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-serif text-xl md:text-2xl font-bold tracking-tight text-navy leading-none">
+                    <span :class="isScrolled ? 'text-navy' : 'text-navy md:text-white'" class="font-serif text-xl md:text-2xl font-black tracking-tight leading-none transition-colors duration-300">
                         LAVANYA
                     </span>
                     <span class="text-[10px] tracking-[0.4em] text-gold font-bold uppercase mt-1">Dental Clinic</span>
@@ -280,11 +288,12 @@
             <!-- Desktop Nav -->
             <div class="hidden lg:flex items-center gap-10">
                 <div class="flex items-center gap-8">
-                    <a href="#home" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70">Home</a>
-                    <a href="#about" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70">About</a>
-                    <a href="#services" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70">Services</a>
-                    <a href="#gallery" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70">Gallery</a>
-                    <a href="#contact" class="text-xs font-bold hover:text-gold transition-colors uppercase tracking-widest text-navy/70">Contact</a>
+                    <a href="#home" :class="isScrolled ? 'text-navy' : 'text-white'" class="text-xs font-black hover:text-gold transition-all uppercase tracking-widest">Home</a>
+                    <a href="#about" :class="isScrolled ? 'text-navy' : 'text-white'" class="text-xs font-black hover:text-gold transition-all uppercase tracking-widest">About</a>
+                    <a href="#why-choose-us" :class="isScrolled ? 'text-navy' : 'text-white'" class="text-xs font-black hover:text-gold transition-all uppercase tracking-widest">Why Choose Us</a>
+                    <a href="#services" :class="isScrolled ? 'text-navy' : 'text-white'" class="text-xs font-black hover:text-gold transition-all uppercase tracking-widest">Services</a>
+                    <a href="#gallery" :class="isScrolled ? 'text-navy' : 'text-white'" class="text-xs font-black hover:text-gold transition-all uppercase tracking-widest">Gallery</a>
+                    <a href="#contact" :class="isScrolled ? 'text-navy' : 'text-white'" class="text-xs font-black hover:text-gold transition-all uppercase tracking-widest">Contact</a>
                 </div>
                 <div class="h-6 w-px bg-gold/20"></div>
                 <a href="#appointment" class="gold-gradient-bg text-white px-8 py-3 rounded-full text-xs font-bold gold-glow transition-all hover:-translate-y-1 active:translate-y-0 tracking-widest btn-premium">
@@ -293,7 +302,7 @@
             </div>
 
             <!-- Mobile Toggle -->
-            <button class="lg:hidden w-10 h-10 flex items-center justify-center text-navy" @click="isMobileMenuOpen = !isMobileMenuOpen">
+            <button :class="isScrolled ? 'text-navy' : 'text-navy md:text-white'" class="lg:hidden w-10 h-10 flex items-center justify-center transition-colors duration-300" @click="isMobileMenuOpen = !isMobileMenuOpen">
                 <i x-show="!isMobileMenuOpen" data-lucide="menu" class="w-7 h-7"></i>
                 <i x-show="isMobileMenuOpen" data-lucide="x" class="w-7 h-7"></i>
             </button>
@@ -311,6 +320,7 @@
             <div class="flex flex-col gap-6">
                 <a href="#home" @click="isMobileMenuOpen = false" class="text-xl font-bold text-navy hover:text-gold transition-colors">Home</a>
                 <a href="#about" @click="isMobileMenuOpen = false" class="text-xl font-bold text-navy hover:text-gold transition-colors">About</a>
+                <a href="#why-choose-us" @click="isMobileMenuOpen = false" class="text-xl font-bold text-navy hover:text-gold transition-colors">Why Choose Us</a>
                 <a href="#services" @click="isMobileMenuOpen = false" class="text-xl font-bold text-navy hover:text-gold transition-colors">Services</a>
                 <a href="#gallery" @click="isMobileMenuOpen = false" class="text-xl font-bold text-navy hover:text-gold transition-colors">Gallery</a>
                 <a href="#contact" @click="isMobileMenuOpen = false" class="text-xl font-bold text-navy hover:text-gold transition-colors">Contact</a>
@@ -322,12 +332,12 @@
     </nav>
 
     <!-- Hero -->
-    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section id="home" class="relative min-h-screen flex items-center pt-40 md:pt-48 pb-20 overflow-hidden">
         <!-- Cinematic Background Image with Dark Overlay -->
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1629909608135-ca092974bb99?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover" alt="Premium Dental Clinic" referrerPolicy="no-referrer">
-            <div class="absolute inset-0 bg-navy/80 backdrop-blur-[1px]"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-navy/40 via-transparent to-navy/60"></div>
+            <div class="absolute inset-0 bg-navy/85 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-navy/60 via-transparent to-navy/80"></div>
         </div>
 
         <!-- Background Elements -->
@@ -336,30 +346,33 @@
 
         <div class="max-w-7xl mx-auto px-6 relative z-20 w-full">
             <div class="reveal flex flex-col items-center text-center max-w-4xl mx-auto">
-                <a href="https://wa.me/919390739842?text=Hello%2C%20I%20want%20to%20book%20an%20appointment" target="_blank" class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gold/20 border border-gold/30 mb-10 hover:bg-gold/30 transition-all group backdrop-blur-md">
-                    <span class="w-2 h-2 rounded-full bg-gold animate-ping"></span>
-                    <span class="text-gold-light font-bold tracking-[0.2em] uppercase text-[10px] group-hover:text-white transition-colors">Open for Consultations</span>
+                <a href="https://wa.me/919390739842?text=Hello%2C%20I%20want%20to%20book%20an%20appointment" target="_blank" class="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-white/5 border border-white/10 mb-12 mt-4 hover:bg-gold/20 hover:border-gold/30 transition-all group backdrop-blur-xl shadow-2xl">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-gold"></span>
+                    </span>
+                    <span class="text-gold font-bold tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[10px] sm:text-[11px] group-hover:text-white transition-colors">Open for Consultations</span>
                 </a>
-                <h1 class="text-5xl sm:text-7xl xl:text-8xl font-bold text-white leading-[1.1] mb-8 tracking-tighter">
-                    Smile Without Fear, <br>
-                    Smile With <span class="italic font-normal gold-gradient-text">Confidence</span>
+                <h1 class="text-4xl sm:text-8xl xl:text-9xl font-black text-white leading-[1.1] mb-12 tracking-tighter uppercase">
+                    Your <span class="gold-gradient-text">Smile</span>, <br>
+                    Our <span class="italic font-light opacity-80">Passion</span>
                 </h1>
-                <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl leading-relaxed font-semibold">
-                    Painless, modern dental treatments you can trust.
+                <p class="text-xl md:text-3xl text-gray-300 mb-20 max-w-3xl leading-relaxed font-medium opacity-90 px-4">
+                    Experience the perfect blend of clinical excellence and compassionate care. We transform lives through beautiful, healthy smiles.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-6 justify-center w-full sm:w-auto">
-                    <a href="#appointment" class="gold-gradient-bg text-white px-12 py-6 rounded-2xl font-bold flex items-center justify-center gap-3 gold-glow transition-all hover:shadow-2xl tracking-widest btn-premium">
-                        RESERVE NOW <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                <div class="flex flex-col sm:flex-row gap-4 md:gap-8 justify-center w-full sm:w-auto mt-4 md:mt-8">
+                    <a href="#appointment" class="gold-gradient-bg text-white px-8 md:px-16 py-5 md:py-8 rounded-3xl md:rounded-[40px] font-black flex items-center justify-center gap-3 md:gap-4 gold-glow transition-all hover:scale-105 active:scale-95 tracking-[0.2em] md:tracking-[0.25em] text-[10px] md:text-base btn-premium shadow-[0_20px_50px_rgba(212,175,55,0.4)]">
+                        BOOK APPOINTMENT <i data-lucide="calendar" class="w-4 h-4 md:w-6 md:h-6"></i>
                     </a>
-                    <a href="https://wa.me/919390739842?text=Hello%2C%20I%20want%20to%20book%20an%20appointment" target="_blank" class="group flex items-center justify-center gap-4 px-12 py-6 rounded-2xl font-bold text-white border-2 border-white/20 hover:border-gold transition-all hover:bg-white/5 backdrop-blur-sm">
-                        <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-gold group-hover:text-white transition-colors">
-                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    <a href="https://wa.me/919390739842?text=Hello%2C%20I%20want%20to%20book%20an%20appointment" target="_blank" class="group flex items-center justify-center gap-3 md:gap-4 px-8 md:px-16 py-5 md:py-8 rounded-3xl md:rounded-[40px] font-black text-white border-2 border-white/30 hover:border-gold transition-all hover:bg-white/10 backdrop-blur-md tracking-[0.2em] md:tracking-[0.25em] text-[10px] md:text-base">
+                        <div class="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-gold group-hover:text-white transition-all duration-500">
+                            <i data-lucide="message-circle" class="w-4 h-4 md:w-6 md:h-6"></i>
                         </div>
                         CONSULT NOW
                     </a>
                 </div>
                 
-                <div class="mt-20 flex items-center gap-6 p-6 glass-card rounded-3xl inline-flex border-white/10">
+                <div class="mt-12 md:mt-20 flex items-center gap-4 md:gap-6 p-4 md:p-6 glass-card rounded-2xl md:rounded-3xl inline-flex border-white/10">
                     <div class="flex -space-x-4">
                         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop" class="w-12 h-12 rounded-2xl border-4 border-navy/50 object-cover shadow-lg" alt="Patient" referrerPolicy="no-referrer">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop" class="w-12 h-12 rounded-2xl border-4 border-navy/50 object-cover shadow-lg" alt="Patient" referrerPolicy="no-referrer">
@@ -387,7 +400,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-24 items-center">
                 <div class="relative reveal-left">
-                    <div class="aspect-[4/5] rounded-[60px] overflow-hidden shadow-2xl border-8 border-gray-50">
+                    <div class="aspect-[4/5] rounded-[40px] md:rounded-[60px] overflow-hidden shadow-2xl border-4 md:border-8 border-gray-50">
                         <img 
                             src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=1000&auto=format&fit=crop" 
                             alt="Dr. Lavanya" 
@@ -404,10 +417,19 @@
                     </div>
                 </div>
 
-                <div class="reveal-right">
-                    <div class="inline-block px-4 py-2 rounded-full bg-navy/5 text-navy font-bold text-[10px] tracking-[0.3em] uppercase mb-6">The Visionary</div>
-                    <h2 class="text-5xl md:text-6xl font-bold text-navy mb-8 leading-tight">Dr. Lavanya Reddy</h2>
-                    <p class="text-gold font-bold text-2xl mb-10 font-serif italic">MDS, Prosthodontics & Implantology</p>
+                <div class="reveal-right text-center lg:text-left">
+                    <div class="inline-block px-6 py-2 rounded-full bg-navy/5 text-navy font-bold text-[11px] tracking-[0.4em] uppercase mb-10 border border-navy/10">The Visionary</div>
+                    <div class="mb-14">
+                        <h2 class="text-[22px] xs:text-[26px] sm:text-6xl md:text-8xl lg:text-5xl xl:text-6xl font-black text-navy leading-[0.9] mb-6 tracking-tighter uppercase whitespace-nowrap">
+                            Dr. Lavanya <span class="gold-gradient-text">Reddy</span>
+                        </h2>
+                        <div class="flex flex-col lg:flex-row lg:items-center gap-4">
+                            <p class="text-gold font-bold text-[11px] sm:text-sm md:text-base tracking-[0.3em] sm:tracking-[0.4em] uppercase">Dental Specialist</p>
+                            <div class="hidden lg:block h-1 w-8 bg-gold/30 rounded-full"></div>
+                            <p class="text-navy/40 font-bold text-[11px] sm:text-sm md:text-base tracking-[0.3em] sm:tracking-[0.4em] uppercase">Aesthetic Surgeon</p>
+                        </div>
+                    </div>
+                    <p class="text-navy/80 font-bold text-base sm:text-2xl md:text-3xl lg:text-xl xl:text-2xl mb-12 font-serif italic border-l-4 border-gold pl-6 mx-auto lg:mx-0 max-w-md lg:max-w-none">MDS, Prosthodontics & Implantology</p>
                     
                     <div class="space-y-8 text-gray-500 text-lg leading-relaxed mb-12">
                         <p>
@@ -492,6 +514,56 @@
             </div>
         </div>
     </section>
+    
+    <!-- Why Choose Us -->
+    <section id="why-choose-us" class="py-32 bg-gray-50 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gold/5 -skew-x-12 translate-x-1/2"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-12 md:mb-20 reveal">
+                <div class="inline-block px-4 py-2 rounded-full bg-gold/10 text-gold font-bold text-[10px] tracking-[0.3em] uppercase mb-6">Our Excellence</div>
+                <h2 class="text-3xl md:text-6xl font-bold text-navy mb-8">Why Choose Us?</h2>
+                <p class="text-gray-400 text-base md:text-lg">We combine clinical expertise with a patient-first approach to deliver the highest standard of dental care.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Point 1 -->
+                <div class="reveal p-10 rounded-[40px] bg-white shadow-xl border border-gray-100 hover:border-gold/30 transition-all hover:-translate-y-2 group flex flex-col items-center text-center lg:items-start lg:text-left">
+                    <div class="w-16 h-16 rounded-2xl bg-navy/5 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500">
+                        <i data-lucide="user-check" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-4">Experienced Doctor</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Led by Dr. Lavanya Reddy, a specialist with years of clinical mastery in advanced dentistry.</p>
+                </div>
+
+                <!-- Point 2 -->
+                <div class="reveal p-10 rounded-[40px] bg-white shadow-xl border border-gray-100 hover:border-gold/30 transition-all hover:-translate-y-2 group flex flex-col items-center text-center lg:items-start lg:text-left" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 rounded-2xl bg-navy/5 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500">
+                        <i data-lucide="wallet" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-4">Affordable Treatment</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Premium dental care that fits your budget. Transparent pricing with no hidden costs.</p>
+                </div>
+
+                <!-- Point 3 -->
+                <div class="reveal p-10 rounded-[40px] bg-white shadow-xl border border-gray-100 hover:border-gold/30 transition-all hover:-translate-y-2 group flex flex-col items-center text-center lg:items-start lg:text-left" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 rounded-2xl bg-navy/5 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500">
+                        <i data-lucide="microscope" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-4">Modern Equipment</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Equipped with state-of-the-art digital technology for precise and painless treatments.</p>
+                </div>
+
+                <!-- Point 4 -->
+                <div class="reveal p-10 rounded-[40px] bg-white shadow-xl border border-gray-100 hover:border-gold/30 transition-all hover:-translate-y-2 group flex flex-col items-center text-center lg:items-start lg:text-left" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 rounded-2xl bg-navy/5 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500">
+                        <i data-lucide="heart" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-4">Friendly Care</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">A warm, welcoming environment designed to make your dental visit comfortable and stress-free.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Technology Section -->
     <section class="py-32 bg-navy relative overflow-hidden">
@@ -500,9 +572,9 @@
         </div>
         
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-20 reveal">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">World-Class Technology</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto text-lg">We invest in the future of dentistry to ensure your treatments are faster, safer, and more precise than ever before.</p>
+            <div class="text-center mb-12 md:mb-20 reveal">
+                <h2 class="text-2xl md:text-5xl font-bold text-white mb-6">World-Class Technology</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-base md:text-lg">We invest in the future of dentistry to ensure your treatments are faster, safer, and more precise than ever before.</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-12">
@@ -536,15 +608,15 @@
     <!-- Services -->
     <section id="services" class="py-32 bg-gray-50 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-24 reveal">
+            <div class="text-center mb-16 md:mb-24 reveal">
                 <div class="inline-block px-4 py-2 rounded-full bg-gold/10 text-gold font-bold text-[10px] tracking-[0.3em] uppercase mb-6">Our Expertise</div>
-                <h2 class="text-5xl md:text-6xl font-bold text-navy mb-6">Bespoke Treatments</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto text-lg">We offer a curated selection of advanced dental procedures designed to restore health and enhance beauty.</p>
+                <h2 class="text-3xl md:text-6xl font-bold text-navy mb-6">Bespoke Treatments</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-base md:text-lg">We offer a curated selection of advanced dental procedures designed to restore health and enhance beauty.</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Teeth Whitening -->
-                <div class="group glass-card p-10 rounded-[40px] hover:bg-navy transition-all duration-700 cursor-pointer overflow-hidden relative reveal">
+                <div class="group glass-card p-10 rounded-[40px] hover:bg-navy transition-all duration-700 cursor-pointer overflow-hidden relative reveal flex flex-col items-center text-center lg:items-start lg:text-left">
                     <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500 shadow-sm">
                         <i data-lucide="sparkles" class="w-8 h-8"></i>
                     </div>
@@ -561,7 +633,7 @@
                 </div>
 
                 <!-- Dental Implants -->
-                <div class="group glass-card p-10 rounded-[40px] hover:bg-navy transition-all duration-700 cursor-pointer overflow-hidden relative reveal" style="transition-delay: 0.1s">
+                <div class="group glass-card p-10 rounded-[40px] hover:bg-navy transition-all duration-700 cursor-pointer overflow-hidden relative reveal flex flex-col items-center text-center lg:items-start lg:text-left" style="transition-delay: 0.1s">
                     <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500 shadow-sm">
                         <i data-lucide="activity" class="w-8 h-8"></i>
                     </div>
@@ -578,7 +650,7 @@
                 </div>
 
                 <!-- Smile Design -->
-                <div class="group glass-card p-10 rounded-[40px] hover:bg-navy transition-all duration-700 cursor-pointer overflow-hidden relative reveal" style="transition-delay: 0.2s">
+                <div class="group glass-card p-10 rounded-[40px] hover:bg-navy transition-all duration-700 cursor-pointer overflow-hidden relative reveal flex flex-col items-center text-center lg:items-start lg:text-left" style="transition-delay: 0.2s">
                     <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500 shadow-sm">
                         <i data-lucide="gem" class="w-8 h-8"></i>
                     </div>
@@ -595,7 +667,7 @@
                 </div>
 
                 <!-- Root Canal -->
-                <div class="group glass-card p-10 rounded-[40px] hover:bg-navy transition-all duration-700 cursor-pointer overflow-hidden relative reveal" style="transition-delay: 0.3s">
+                <div class="group glass-card p-10 rounded-[40px] hover:bg-navy transition-all duration-700 cursor-pointer overflow-hidden relative reveal flex flex-col items-center text-center lg:items-start lg:text-left" style="transition-delay: 0.3s">
                     <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-white transition-all duration-500 shadow-sm">
                         <i data-lucide="shield" class="w-8 h-8"></i>
                     </div>
@@ -619,12 +691,12 @@
         <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gold/5 rounded-full blur-[150px]"></div>
         
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="flex flex-col lg:flex-row justify-between items-end mb-24 gap-12">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 md:mb-24 gap-8 lg:gap-12">
                 <div class="reveal-left">
                     <div class="inline-block px-4 py-2 rounded-full bg-gold/10 text-gold font-bold text-[10px] tracking-[0.3em] uppercase mb-6">Gallery</div>
-                    <h2 class="text-5xl md:text-7xl font-bold leading-tight">Masterpieces <br>of <span class="italic font-normal text-gold">Transformation</span></h2>
+                    <h2 class="text-4xl md:text-7xl font-bold leading-tight">Masterpieces <br>of <span class="italic font-normal text-gold">Transformation</span></h2>
                 </div>
-                <p class="text-gray-400 max-w-md text-lg leading-relaxed reveal-right">
+                <p class="text-gray-400 max-w-md text-base md:text-lg leading-relaxed reveal-right">
                     Witness the clinical excellence and artistic precision behind our most successful smile transformations.
                 </p>
             </div>
@@ -663,39 +735,39 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-24 reveal">
+            <div class="text-center mb-16 md:mb-24 reveal">
                 <div class="inline-block px-4 py-2 rounded-full bg-navy/5 text-navy font-bold text-[10px] tracking-[0.3em] uppercase mb-6">Testimonials</div>
-                <h2 class="text-5xl md:text-6xl font-bold text-navy">Patient Stories</h2>
+                <h2 class="text-3xl md:text-6xl font-bold text-navy">Patient Stories</h2>
             </div>
 
             <div class="relative max-w-5xl mx-auto">
-                <div class="overflow-hidden rounded-[60px] glass-card p-12 md:p-24 relative testimonial-card shadow-[0_50px_100px_-20px_rgba(10,31,68,0.15)]">
+                <div class="overflow-hidden rounded-[40px] md:rounded-[60px] glass-card p-6 md:p-20 relative testimonial-card shadow-[0_50px_100px_-20px_rgba(10,31,68,0.15)]">
                     <!-- Quote Icon Background -->
-                    <div class="absolute top-10 left-10 text-gold/10 pointer-events-none">
-                        <i data-lucide="quote" class="w-48 h-48"></i>
+                    <div class="absolute top-5 left-5 md:top-10 md:left-10 text-gold/10 pointer-events-none">
+                        <i data-lucide="quote" class="w-16 h-16 md:w-48 md:h-48"></i>
                     </div>
 
                     <div class="flex transition-transform duration-1000 cubic-bezier(0.16, 1, 0.3, 1)" :style="`transform: translateX(-${activeIndex * 100}%)`">
                         <template x-for="(review, index) in reviews" :key="index">
-                            <div class="w-full flex-shrink-0 px-4">
-                                <div class="text-center relative z-10">
-                                    <div class="flex justify-center text-gold mb-12 gap-1">
+                            <div class="w-full flex-shrink-0 px-2 md:px-4">
+                                <div class="text-center relative z-10 flex flex-col items-center">
+                                    <div class="flex justify-center text-gold mb-8 md:mb-12 gap-1">
                                         <template x-for="i in review.rating">
-                                            <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                                            <i data-lucide="star" class="w-5 h-5 md:w-6 md:h-6 fill-current"></i>
                                         </template>
                                     </div>
-                                    <p class="text-2xl md:text-4xl text-navy font-serif italic mb-16 leading-relaxed tracking-tight" x-text="'&quot;' + review.text + '&quot;'"></p>
+                                    <p class="text-xl md:text-4xl text-navy font-serif italic mb-10 md:mb-16 leading-relaxed tracking-tight max-w-3xl" x-text="'&quot;' + review.text + '&quot;'"></p>
                                     <div class="flex flex-col items-center">
                                         <div class="relative mb-6">
-                                            <img :src="review.image" class="w-24 h-24 rounded-3xl object-cover shadow-2xl border-4 border-white" alt="Patient" referrerPolicy="no-referrer">
+                                            <img :src="review.image" class="w-20 h-20 md:w-24 md:h-24 rounded-3xl object-cover shadow-2xl border-4 border-white" alt="Patient" referrerPolicy="no-referrer">
                                             <div class="absolute -bottom-2 -right-2 bg-gold text-white p-2 rounded-xl shadow-lg">
-                                                <i data-lucide="check" class="w-4 h-4"></i>
+                                                <i data-lucide="check" class="w-3 h-3 md:w-4 md:h-4"></i>
                                             </div>
                                         </div>
-                                        <h4 class="font-bold text-2xl text-navy" x-text="review.name"></h4>
-                                        <p class="text-gold text-xs font-bold uppercase tracking-[0.3em] mt-2" x-text="review.role"></p>
-                                        <div class="mt-6 flex items-center gap-2 text-green-600 font-bold text-[10px] uppercase tracking-widest bg-green-50 px-4 py-2 rounded-full border border-green-100">
-                                            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Verified Patient
+                                        <h4 class="font-bold text-xl md:text-2xl text-navy" x-text="review.name"></h4>
+                                        <p class="text-gold text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] mt-2" x-text="review.role"></p>
+                                        <div class="mt-6 flex items-center gap-2 text-green-600 font-bold text-[9px] md:text-[10px] uppercase tracking-widest bg-green-50 px-4 py-2 rounded-full border border-green-100">
+                                            <i data-lucide="shield-check" class="w-3 h-3 md:w-3.5 md:h-3.5"></i> Verified Patient
                                         </div>
                                     </div>
                                 </div>
@@ -729,45 +801,45 @@
     <!-- Appointment Form -->
     <section id="appointment" class="py-32 bg-gray-50">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="bg-white rounded-[60px] shadow-[0_50px_100px_-20px_rgba(10,31,68,0.15)] overflow-hidden grid lg:grid-cols-2 reveal">
-                <div class="p-16 md:p-24 bg-navy text-white relative overflow-hidden">
+            <div class="bg-white rounded-[40px] md:rounded-[60px] shadow-[0_50px_100px_-20px_rgba(10,31,68,0.15)] overflow-hidden grid lg:grid-cols-2 reveal">
+                <div class="p-10 md:p-24 bg-navy text-white relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-[100px]"></div>
                     <div class="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-[80px]"></div>
                     
                     <div class="relative z-10">
                         <div class="inline-block px-4 py-2 rounded-full bg-white/10 text-gold font-bold text-[10px] tracking-[0.3em] uppercase mb-8">Reservations</div>
-                        <h2 class="text-5xl md:text-6xl font-bold mb-10 leading-tight">Begin Your <br><span class="text-gold">Journey</span></h2>
-                        <p class="text-gray-400 mb-16 text-lg leading-relaxed max-w-md">
+                        <h2 class="text-4xl md:text-6xl font-bold mb-10 leading-tight">Begin Your <br><span class="text-gold">Journey</span></h2>
+                        <p class="text-gray-400 mb-12 md:mb-16 text-base md:text-lg leading-relaxed max-w-md">
                             Our concierge team is dedicated to providing you with a seamless and luxurious experience from the moment you reach out.
                         </p>
                         
                         <div class="space-y-10">
-                            <div class="flex items-center gap-8 group">
-                                <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all">
-                                    <i data-lucide="phone" class="w-7 h-7"></i>
+                            <div class="flex items-center gap-6 md:gap-8 group">
+                                <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all flex-shrink-0">
+                                    <i data-lucide="phone" class="w-6 h-6 md:w-7 md:h-7"></i>
                                 </div>
-                                <div>
+                                <div class="min-w-0 overflow-visible">
                                     <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-1">Direct Line</p>
-                                    <p class="text-2xl font-bold">+91 93907 39842</p>
+                                    <p class="text-lg sm:text-xl md:text-2xl font-bold whitespace-nowrap">+91 93907 39842</p>
                                 </div>
                             </div>
-                            <div class="flex items-center gap-8 group">
-                                <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all">
-                                    <i data-lucide="mail" class="w-7 h-7"></i>
+                            <div class="flex items-center gap-6 md:gap-8 group">
+                                <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all flex-shrink-0">
+                                    <i data-lucide="mail" class="w-6 h-6 md:w-7 md:h-7"></i>
                                 </div>
-                                <div>
+                                <div class="min-w-0 overflow-visible">
                                     <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-1">Concierge Email</p>
-                                    <p class="text-2xl font-bold break-all">care@lavanyadental.com</p>
+                                    <p class="text-sm sm:text-lg md:text-2xl font-bold whitespace-nowrap">care@lavanyadental.com</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="p-16 md:p-24 flex flex-col justify-center">
+                <div class="p-10 md:p-24 flex flex-col justify-center">
                     <div x-show="!isSubmitted">
-                        <form @submit.prevent="isSubmitted = true; setTimeout(() => isSubmitted = false, 5000)" class="space-y-8">
-                            <div class="grid md:grid-cols-2 gap-8">
+                        <form @submit.prevent="isSubmitted = true; setTimeout(() => isSubmitted = false, 5000)" class="space-y-6 md:space-y-8">
+                            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
                                 <div class="space-y-3">
                                     <label class="text-[10px] font-bold text-navy uppercase tracking-[0.2em]">Full Name</label>
                                     <input required type="text" placeholder="John Doe" class="w-full bg-gray-50 border-b-2 border-gray-100 px-0 py-4 focus:outline-none focus:border-gold transition-colors text-navy font-medium placeholder:text-gray-300">
@@ -824,33 +896,33 @@
     <section id="contact" class="py-32 bg-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-24 items-center">
-                <div class="reveal-left">
+                <div class="reveal-left text-center lg:text-left">
                     <div class="inline-block px-4 py-2 rounded-full bg-navy/5 text-navy font-bold text-[10px] tracking-[0.3em] uppercase mb-6">Location</div>
-                    <h2 class="text-5xl md:text-6xl font-bold text-navy mb-12 leading-tight">Visit Our <br><span class="italic font-normal text-gold">Sanctuary</span></h2>
+                    <h2 class="text-4xl md:text-6xl font-bold text-navy mb-12 leading-tight">Visit Our <br><span class="italic font-normal text-gold">Sanctuary</span></h2>
                     
-                    <div class="space-y-12">
-                        <div class="flex gap-8 group">
+                    <div class="space-y-8 md:space-y-12 max-w-md mx-auto lg:mx-0">
+                        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 md:gap-8 group text-center sm:text-left">
                             <div class="w-16 h-16 rounded-3xl bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all flex-shrink-0">
                                 <i data-lucide="map-pin" class="w-7 h-7"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-navy text-2xl mb-3">The Clinic</h4>
-                                <p class="text-gray-500 text-lg leading-relaxed">Kaluvoya, Nellore,<br>Andhra Pradesh – 524343</p>
+                                <h4 class="font-bold text-navy text-xl md:text-2xl mb-3">The Clinic</h4>
+                                <p class="text-gray-500 text-base md:text-lg leading-relaxed">Kaluvoya, Nellore,<br>Andhra Pradesh – 524343</p>
                             </div>
                         </div>
 
-                        <div class="flex gap-8 group">
+                        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 md:gap-8 group text-center sm:text-left">
                             <div class="w-16 h-16 rounded-3xl bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all flex-shrink-0">
                                 <i data-lucide="clock" class="w-7 h-7"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-navy text-2xl mb-3">Bespoke Hours</h4>
-                                <p class="text-gray-500 text-lg leading-relaxed">Mon - Sat: 10:00 AM - 08:00 PM<br>Sunday: By Private Appointment</p>
+                                <h4 class="font-bold text-navy text-xl md:text-2xl mb-3">Bespoke Hours</h4>
+                                <p class="text-gray-500 text-base md:text-lg leading-relaxed">Mon - Sat: 10:00 AM - 08:00 PM<br>Sunday: By Private Appointment</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="flex gap-6 mt-16">
+                    <div class="flex justify-center lg:justify-start gap-6 mt-16">
                         <a href="#" class="w-16 h-16 rounded-2xl border-2 border-navy/5 flex items-center justify-center text-navy hover:bg-gold hover:border-gold hover:text-white transition-all shadow-sm">
                             <i data-lucide="instagram" class="w-7 h-7"></i>
                         </a>
@@ -864,13 +936,13 @@
                 </div>
 
                 <div class="reveal-right">
-                    <div class="rounded-[60px] overflow-hidden shadow-2xl border-8 border-gray-50 h-[600px] relative">
+                    <div class="rounded-[40px] md:rounded-[60px] overflow-hidden shadow-2xl border-4 md:border-8 border-gray-50 h-[400px] md:h-[600px] relative">
                         <!-- Mock Map / Image -->
                         <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Clinic Interior">
                         <div class="absolute inset-0 bg-navy/20"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
-                            <a href="https://maps.google.com" target="_blank" class="bg-white text-navy px-10 py-5 rounded-2xl font-bold shadow-2xl flex items-center gap-3 hover:-translate-y-1 transition-all tracking-widest">
-                                GET DIRECTIONS <i data-lucide="external-link" class="w-5 h-5"></i>
+                            <a href="https://maps.google.com" target="_blank" class="bg-white text-navy px-6 md:px-10 py-4 md:py-5 rounded-2xl font-bold shadow-2xl flex items-center gap-3 hover:-translate-y-1 transition-all tracking-widest text-xs md:text-base">
+                                GET DIRECTIONS <i data-lucide="external-link" class="w-4 h-4 md:w-5 md:h-5"></i>
                             </a>
                         </div>
                     </div>
@@ -909,15 +981,25 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/919390739842?text=Hello%2C%20I%20want%20to%20book%20an%20appointment"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="fixed bottom-10 right-10 w-20 h-20 bg-[#25D366] text-white rounded-[32px] flex items-center justify-center shadow-[0_20px_50px_rgba(37,211,102,0.4)] z-[100] cursor-pointer hover:scale-110 hover:-translate-y-2 transition-all duration-500 group">
-        <i data-lucide="message-circle" class="w-10 h-10 fill-current"></i>
-        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold px-3 py-1.5 rounded-full animate-bounce shadow-lg">1</span>
-        <div class="absolute right-full mr-4 bg-white text-navy px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-xl pointer-events-none">Chat with us</div>
-    </a>
+    <!-- Floating Contact Buttons -->
+    <div class="fixed bottom-6 right-6 md:bottom-10 md:right-10 flex flex-col gap-4 md:gap-5 z-[100]">
+        <!-- Call Button -->
+        <a href="tel:+919390739842" 
+           class="w-12 h-12 md:w-16 md:h-16 bg-navy text-gold rounded-2xl flex items-center justify-center shadow-2xl border border-gold/30 hover:bg-gold hover:text-navy transition-all duration-500 hover:scale-110 group relative">
+            <i data-lucide="phone" class="w-5 h-5 md:w-7 md:h-7"></i>
+            <div class="hidden md:block absolute right-full mr-4 bg-white text-navy px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-xl pointer-events-none border border-gold/10">Call Now</div>
+        </a>
+
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/919390739842?text=Hello%2C%20I%20want%20to%20book%20an%20appointment"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="w-12 h-12 md:w-16 md:h-16 bg-[#25D366] text-white rounded-2xl flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-500 group relative">
+            <i data-lucide="message-circle" class="w-6 h-6 md:w-8 md:h-8 fill-current"></i>
+            <span class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded-full animate-bounce shadow-lg">1</span>
+            <div class="hidden md:block absolute right-full mr-4 bg-white text-navy px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-xl pointer-events-none border border-gold/10">WhatsApp Us</div>
+        </a>
+    </div>
 
     <!-- Scroll To Top -->
     <button x-show="isVisible" 
@@ -928,8 +1010,8 @@
             x-transition:leave-start="opacity-100 translate-y-0"
             x-transition:leave-end="opacity-0 translate-y-10"
             @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-            class="fixed bottom-36 right-12 w-14 h-14 bg-navy text-gold rounded-2xl flex items-center justify-center shadow-2xl z-[100] border border-gold/30 hover:bg-gold hover:text-navy transition-all hover:-translate-y-1" x-cloak>
-        <i data-lucide="chevron-up" class="w-7 h-7"></i>
+            class="fixed bottom-40 md:bottom-52 right-7 md:right-11 w-12 h-12 md:w-14 md:h-14 bg-white/80 backdrop-blur-md text-navy rounded-2xl flex items-center justify-center shadow-xl z-[100] border border-navy/10 hover:bg-navy hover:text-white transition-all hover:-translate-y-1" x-cloak>
+        <i data-lucide="chevron-up" class="w-6 h-6 md:w-7 md:h-7"></i>
     </button>
 
     <script>
